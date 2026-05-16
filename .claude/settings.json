@@ -41,7 +41,20 @@
       "Bash(curl -s http://localhost:1313/shu-urt-lab/en/research/)",
       "Bash(start http://localhost:1313/shu-urt-lab/)",
       "Bash(start \"d:/博士/shu-urt-lab/index.html\")",
-      "Bash(rm -rf \"d:/博士/shu-urt-lab/config\" \"d:/博士/shu-urt-lab/i18n\" \"d:/博士/shu-urt-lab/layouts\" \"d:/博士/shu-urt-lab/content\" \"d:/博士/shu-urt-lab/data\" \"d:/博士/shu-urt-lab/archetypes\" \"d:/博士/shu-urt-lab/themes\" \"d:/博士/shu-urt-lab/assets\" \"d:/博士/shu-urt-lab/public\" \"d:/博士/shu-urt-lab/resources\" \"d:/博士/shu-urt-lab/static\" \"d:/博士/shu-urt-lab/hugo*\" 2>&1)"
+      "Bash(rm -rf \"d:/博士/shu-urt-lab/config\" \"d:/博士/shu-urt-lab/i18n\" \"d:/博士/shu-urt-lab/layouts\" \"d:/博士/shu-urt-lab/content\" \"d:/博士/shu-urt-lab/data\" \"d:/博士/shu-urt-lab/archetypes\" \"d:/博士/shu-urt-lab/themes\" \"d:/博士/shu-urt-lab/assets\" \"d:/博士/shu-urt-lab/public\" \"d:/博士/shu-urt-lab/resources\" \"d:/博士/shu-urt-lab/static\" \"d:/博士/shu-urt-lab/hugo*\" 2>&1)",
+      "WebFetch(domain:cdnlogo.com)",
+      "Bash(curl -L -o \"d:/博士/shu-urt-lab/img/logos/shanghai-metro.svg\" \"https://upload.wikimedia.org/wikipedia/commons/4/41/Shanghai_Metro_Logo.svg\")",
+      "Bash(curl -L -o \"d:/博士/shu-urt-lab/img/logos/huawei.svg\" \"https://upload.wikimedia.org/wikipedia/commons/0/04/Huawei_Standard_logo.svg\")",
+      "Bash(curl -L --connect-timeout 10 -o \"d:/博士/shu-urt-lab/img/logos/huawei.svg\" \"https://simpleicons.org/icons/huawei.svg\")",
+      "Bash(curl -L --connect-timeout 10 -o \"d:/博士/shu-urt-lab/img/logos/shanghaimetro.svg\" \"https://simpleicons.org/icons/shanghaimetro.svg\")",
+      "Bash(curl -L --connect-timeout 10 -o \"d:/博士/shu-urt-lab/img/logos/crsc.svg\" \"https://simpleicons.org/icons/chinarailway.svg\")",
+      "Bash(curl -L --connect-timeout 10 -o \"d:/博士/shu-urt-lab/img/logos/casco.svg\" \"https://simpleicons.org/icons/casco.svg\")",
+      "Bash(curl -L --connect-timeout 10 -o \"d:/博士/shu-urt-lab/img/logos/casco.svg\" \"https://simpleicons.org/icons/cascosignal.svg\")",
+      "Bash(python -c ' *)",
+      "Bash(python -c \"from docx import Document; doc = Document\\('introduce.docx'\\); [print\\(f'[{i}] [{p.style.name}] {p.text}'\\) for i,p in enumerate\\(doc.paragraphs\\)]\")",
+      "Bash(python -m pip install python-docx)",
+      "Bash(\"D:/LenovoSoftstore/Install/Anaconda/python\" -m pip install python-docx)",
+      "Bash(D:/LenovoSoftstore/Install/Anaconda/python -c ' *)"
     ],
     "additionalDirectories": [
       "d:\\博士\\shu-urt-lab"
