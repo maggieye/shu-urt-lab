@@ -1,0 +1,13 @@
+directions:
+  - icon: "satellite-dish"
+    title: "Train-Ground Wireless Propagation and Channel Modeling"
+    description: "Investigating electromagnetic wave propagation theory in confined spaces such as tunnels. Constructing multi-band channel models from Sub-6 GHz to mmWave, including key parameters like path loss, delay spread, and Doppler shift, providing theoretical support for rail transit wireless communication system design."
+  - icon: "shield-check"
+    title: "High-Reliability Train Control Communication Systems"
+    description: "Focused on Communication-Based Train Control (CBTC) systems, researching 4G/5G (LTE-M) communication with stringent requirements for low latency and high reliability. Overcoming engineering challenges in interfacing signaling systems with communication systems to ensure train operation safety."
+  - icon: "microchip"
+    title: "Confined-Space MIMO mmWave Transmission Characteristics"
+    description: "Exploring the transmission characteristics of MIMO antenna systems at mmWave frequencies in confined spaces such as tunnels and stations. Investigating cutting-edge topics including RIS (Reconfigurable Intelligent Surface) assisted communication, channel correlation, and capacity optimization."
+  - icon: "lock"
+    title: "Information Security for Rail Transit Wireless Communications"
+    description: "Researching information security technologies for rail transit wireless communication systems, including the application of domestic cryptographic algorithms (ZUC cipher) in CBTC systems, and the development and performance testing of dedicated LTE-M information security protection equipment."

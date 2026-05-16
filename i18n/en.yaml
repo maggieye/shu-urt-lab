@@ -1,0 +1,77 @@
+- id: nav_about
+  translation: 'About'
+- id: nav_research
+  translation: 'Research'
+- id: nav_projects
+  translation: 'Projects & Awards'
+- id: nav_publications
+  translation: 'Publications'
+- id: nav_resources
+  translation: 'Resources'
+- id: nav_team
+  translation: 'Team'
+
+- id: home_title
+  translation: 'Joint Laboratory of Rail Transit Wireless Communication, Shanghai University'
+- id: home_subtitle
+  translation: 'Train-Ground Wireless Communication • Channel Modeling • CBTC Systems'
+
+- id: learn_more
+  translation: 'Learn More'
+- id: explore_resources
+  translation: 'Explore Resources'
+- id: meet_team
+  translation: 'Meet the Team'
+
+- id: about_section
+  translation: 'About the Laboratory'
+- id: research_section
+  translation: 'Research Directions'
+- id: projects_section
+  translation: 'Projects & Awards'
+- id: publications_section
+  translation: 'Academic Achievements'
+- id: resources_section
+  translation: 'Open-Source Resources'
+- id: team_section
+  translation: 'Research Team'
+
+- id: footer_lab
+  translation: 'Joint Laboratory of Rail Transit Wireless Communication, Shanghai University'
+- id: footer_address
+  translation: 'School of Communication and Information Engineering, Shanghai University, 99 Shangda Road, Baoshan District, Shanghai'
+- id: footer_copyright
+  translation: '© 2025 Joint Laboratory of Rail Transit Wireless Communication, Shanghai University'
+
+- id: stats_csi
+  translation: 'CSI Records'
+- id: stats_env
+  translation: 'Typical URT Environments'
+- id: stats_spectrum
+  translation: 'Full-band Coverage'
+- id: stats_data
+  translation: 'Hybrid Sim-Real Data'
+
+- id: lang_toggle
+  translation: '中文'
+- id: read_more
+  translation: 'Read More'
+- id: back_home
+  translation: 'Back to Home'
+
+- id: projects_funded
+  translation: 'Funded Projects'
+- id: projects_awards
+  translation: 'Awards'
+- id: projects_engineering
+  translation: 'Engineering Practice'
+
+- id: publications_journals
+  translation: 'Journal Papers'
+- id: publications_patents
+  translation: 'Patents'
+- id: publications_conferences
+  translation: 'Conference Papers'
+
+- id: download_dataset
+  translation: 'Access Dataset'

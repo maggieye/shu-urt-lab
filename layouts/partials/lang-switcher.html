@@ -1,0 +1,5 @@
+{{ range .Translations }}
+<a href="{{ .RelPermalink }}" class="btn btn-outline-light btn-sm lang-toggle-btn">
+  <i class="fa-solid fa-globe me-1"></i>{{ .Language.Label }}
+</a>
+{{ end }}

@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sort -t/ -k2)",
+      "Bash(pandoc --version)",
+      "Bash(pdftotext -layout \"d:/博士/shu-urt-lab/lab_intro.pdf\" -)",
+      "Bash(python3 -c \"import docx; print\\('python-docx available'\\)\")",
+      "Bash(python -c \"import docx; print\\('python-docx available'\\)\")",
+      "Bash(ls /c/Users/yejia/AppData/Local/Programs/Python/ 2>&1; ls /c/Users/yejia/AppData/Local/Microsoft/WindowsApps/python* 2>&1)",
+      "Read(//c/Users/yejia/AppData/Local/Microsoft/WindowsApps/**)"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+slides:
+  - image: "slide1.jpg"
+    title: "上海大学轨道交通无线通信联合实验室"
+    subtitle: "上海大学 | 卡斯柯信号 | 中铁通信信号测试 | 上海控安"
+  - image: "slide2.jpg"
+    title: "车地无线信道建模与传输"
+    subtitle: "Sub-6 GHz 至毫米波全频段覆盖 · 限定空间电磁传播理论"
+  - image: "slide3.jpg"
+    title: "URT-SimReal 开源数据集"
+    subtitle: "316,026 条 CSI 记录 | 11 类典型城轨场景 | 仿真实测融合"
