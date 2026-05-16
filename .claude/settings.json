@@ -54,7 +54,9 @@
       "Bash(python -c \"from docx import Document; doc = Document\\('introduce.docx'\\); [print\\(f'[{i}] [{p.style.name}] {p.text}'\\) for i,p in enumerate\\(doc.paragraphs\\)]\")",
       "Bash(python -m pip install python-docx)",
       "Bash(\"D:/LenovoSoftstore/Install/Anaconda/python\" -m pip install python-docx)",
-      "Bash(D:/LenovoSoftstore/Install/Anaconda/python -c ' *)"
+      "Bash(D:/LenovoSoftstore/Install/Anaconda/python -c ' *)",
+      "Bash(git submodule *)",
+      "Bash(git ls-tree *)"
     ],
     "additionalDirectories": [
       "d:\\博士\\shu-urt-lab"
