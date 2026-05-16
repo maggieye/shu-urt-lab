@@ -38,7 +38,13 @@
       "Bash(curl -s http://localhost:1313/shu-urt-lab/resources/)",
       "Bash(curl -s http://localhost:1313/shu-urt-lab/team/)",
       "Bash(curl -s http://localhost:1313/shu-urt-lab/en/about/)",
-      "Bash(curl -s http://localhost:1313/shu-urt-lab/en/research/)"
+      "Bash(curl -s http://localhost:1313/shu-urt-lab/en/research/)",
+      "Bash(start http://localhost:1313/shu-urt-lab/)",
+      "Bash(start \"d:/博士/shu-urt-lab/index.html\")",
+      "Bash(rm -rf \"d:/博士/shu-urt-lab/config\" \"d:/博士/shu-urt-lab/i18n\" \"d:/博士/shu-urt-lab/layouts\" \"d:/博士/shu-urt-lab/content\" \"d:/博士/shu-urt-lab/data\" \"d:/博士/shu-urt-lab/archetypes\" \"d:/博士/shu-urt-lab/themes\" \"d:/博士/shu-urt-lab/assets\" \"d:/博士/shu-urt-lab/public\" \"d:/博士/shu-urt-lab/resources\" \"d:/博士/shu-urt-lab/static\" \"d:/博士/shu-urt-lab/hugo*\" 2>&1)"
+    ],
+    "additionalDirectories": [
+      "d:\\博士\\shu-urt-lab"
     ]
   }
 }

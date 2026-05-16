@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>上海大学轨道交通无线通信联合实验室</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue-dark: #1a3c5e;
+  --blue-nav: #1f4f7a;
+  --blue-mid: #2a6496;
+  --blue-accent: #3a7fc1;
+  --blue-light: #e8f2fa;
+  --blue-bg: #f0f5fa;
+  --gold: #c9a84c;
+  --text: #2c3e50;
+  --text-light: #5a6c7d;
+  --text-muted: #8899aa;
+  --bg: #fafbfc;
+  --white: #ffffff;
+  --border: #dde4ed;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+* { box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+}
+
+/* ===== TOP BANNER ===== */
+.top-banner {
+  background: linear-gradient(135deg, #132a42 0%, #1a3c5e 40%, #1f4f7a 100%);
+  color: #fff; padding: 16px 0;
+  border-bottom: 3px solid var(--gold);
+}
+.top-banner .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.banner-left { display: flex; align-items: center; gap: 14px; }
+.banner-logo {
+  width: 52px; height: 52px; background: rgba(255,255,255,0.12);
+  border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
+}
+.banner-title { font-size: 1.35rem; font-weight: 700; letter-spacing: 0.5px; }
+.banner-sub { font-size: 0.78rem; opacity: 0.8; margin-top: 2px; }
+.lang-btn {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3);
+  color: #fff; padding: 6px 16px; border-radius: 20px; cursor: pointer;
+  font-size: 0.85rem; transition: all 0.25s; white-space: nowrap;
+}
+.lang-btn:hover { background: rgba(255,255,255,0.2); border-color: #fff; }
+
+/* ===== TAB NAVIGATION ===== */
+.tab-nav-wrapper {
+  background: #fff; border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+}
+.tab-nav {
+  display: flex; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; overflow-x: auto;
+}
+.tab-nav .nav-item { flex: 1; min-width: 100px; }
+.tab-nav .nav-link {
+  display: block; text-align: center; padding: 15px 10px;
+  color: var(--text-light); font-weight: 500; font-size: 1.1rem;
+  text-decoration: none; border-bottom: 3px solid transparent;
+  transition: all 0.25s; white-space: nowrap; cursor: pointer;
+}
+.tab-nav .nav-link:hover { color: var(--blue-accent); background: var(--blue-light); }
+.tab-nav .nav-link.active {
+  color: var(--blue-mid); border-bottom-color: var(--blue-accent);
+  font-weight: 600; background: var(--blue-light);
+}
+.tab-nav .nav-link i { margin-right: 5px; }
+
+/* ===== TAB CONTENT ===== */
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+.section-body { padding: 50px 0; background: #fff; }
+
+/* ===== ABOUT TAB ===== */
+.about-hero {
+  background: linear-gradient(135deg, #132a42, #1f4f7a);
+  color: #fff; padding: 40px 0;
+}
+.about-hero h1 { font-weight: 700; font-size: 2rem; margin-bottom: 6px; }
+.about-hero p { opacity: 0.85; font-size: 1rem; }
+
+.about-content { padding: 50px 0; background: #fff; }
+.about-content h2 {
+  color: var(--blue-dark); font-weight: 700; font-size: 1.5rem;
+  border-left: 4px solid var(--blue-accent); padding-left: 14px; margin-bottom: 20px;
+}
+.about-content p { color: var(--text-light); font-size: 1.02rem; line-height: 1.9; margin-bottom: 14px; }
+.about-content strong { color: var(--blue-mid); }
+
+/* About carousel (small, right side) */
+.about-carousel {
+  border-radius: 10px; overflow: hidden;
+  box-shadow: var(--shadow-lg); max-width: 520px;
+}
+.about-carousel .carousel-item { height: 300px; border-radius: 10px; }
+.about-carousel .carousel-item img {
+  width: 100%; height: 100%; object-fit: cover; border-radius: 10px;
+}
+
+/* Collaborator logos */
+.collab-card {
+  text-align: center; padding: 20px 14px;
+  border: 1px solid var(--border); border-radius: 10px;
+  background: #fff; box-shadow: var(--shadow);
+  transition: transform 0.25s; height: 100%;
+}
+.collab-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.collab-card i { font-size: 2rem; color: var(--blue-mid); margin-bottom: 8px; }
+.collab-card h5 { font-size: 1rem; font-weight: 600; color: var(--blue-dark); margin-bottom: 4px; }
+.collab-card p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
+
+/* ===== SECTION PAGE HEADER ===== */
+.section-hero {
+  background: linear-gradient(135deg, #132a42, #1f4f7a);
+  color: #fff; padding: 48px 0 40px; text-align: center;
+}
+.section-hero h1 { font-weight: 700; font-size: 2rem; margin-bottom: 8px; }
+.section-hero p { opacity: 0.85; font-size: 1rem; max-width: 700px; margin: 0 auto; }
+
+/* ===== COMMON SECTION STYLES ===== */
+.section-body h2 {
+  color: var(--blue-dark); font-weight: 700; font-size: 1.5rem;
+  border-left: 4px solid var(--blue-accent); padding-left: 14px; margin-bottom: 24px;
+}
+.section-body h3 { color: var(--blue-mid); font-size: 1.2rem; margin-top: 28px; margin-bottom: 14px; }
+.section-body p { margin-bottom: 14px; line-height: 1.9; }
+.section-body img { max-width: 100%; border-radius: 8px; margin: 20px 0; box-shadow: var(--shadow); }
+
+/* Cards */
+.info-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 10px; padding: 28px 22px; height: 100%;
+  box-shadow: var(--shadow); transition: transform 0.25s, box-shadow 0.25s;
+}
+.info-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.info-card .card-icon {
+  width: 56px; height: 56px; border-radius: 12px;
+  background: var(--blue-light); color: var(--blue-accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; margin-bottom: 16px;
+}
+.info-card h4 { font-size: 1.05rem; font-weight: 600; color: var(--blue-dark); margin-bottom: 10px; }
+.info-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.7; }
+
+.research-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 12px; padding: 32px 24px; height: 100%;
+  box-shadow: var(--shadow); transition: transform 0.25s, box-shadow 0.25s; text-align: center;
+}
+.research-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.research-card .rc-icon {
+  width: 70px; height: 70px; border-radius: 50%;
+  background: var(--blue-light); color: var(--blue-mid);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; margin: 0 auto 16px;
+}
+.research-card h4 { font-size: 1.05rem; font-weight: 600; color: var(--blue-dark); }
+.research-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; margin-top: 8px; }
+
+/* Tables */
+.data-table { width: 100%; font-size: 0.92rem; }
+.data-table thead { background: var(--blue-dark); color: #fff; }
+.data-table th { padding: 12px 14px; font-weight: 500; }
+.data-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+.data-table tbody tr:hover { background: var(--blue-light); }
+.data-table tbody tr:nth-child(even) { background: var(--blue-bg); }
+
+/* Award cards */
+.award-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 10px; padding: 22px; height: 100%;
+  box-shadow: var(--shadow); position: relative;
+}
+.award-card::before {
+  content: ''; position: absolute; left: 0; top: 12px; bottom: 12px;
+  width: 4px; background: var(--gold); border-radius: 2px;
+}
+.award-year {
+  display: inline-block; background: var(--blue-mid); color: #fff;
+  padding: 3px 14px; border-radius: 14px; font-size: 0.82rem; font-weight: 600; margin-bottom: 10px;
+}
+.award-card h5 { font-size: 1rem; font-weight: 600; color: var(--blue-dark); }
+.award-card .award-level { font-size: 0.85rem; color: var(--text-muted); }
+
+/* Publications */
+.pub-group { margin-bottom: 32px; }
+.pub-item {
+  padding: 10px 0; border-bottom: 1px solid var(--border);
+  font-size: 0.92rem; line-height: 1.7;
+}
+.pub-item:last-child { border-bottom: none; }
+.pub-authors { color: var(--text-muted); }
+.pub-title { font-weight: 600; color: var(--blue-dark); }
+.pub-venue { font-style: italic; color: var(--text-muted); }
+
+/* Team */
+.team-profile {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 12px; padding: 36px; box-shadow: var(--shadow);
+}
+.team-name { font-size: 1.6rem; font-weight: 700; color: var(--blue-dark); }
+.team-role { font-size: 1rem; color: var(--text-muted); margin-bottom: 18px; }
+.role-list, .award-list { list-style: none; padding: 0; }
+.role-list li, .award-list li {
+  padding: 6px 0; font-size: 0.93rem; border-bottom: 1px dotted var(--border);
+}
+.role-list li::before { content: '\f0da'; font-family: 'Font Awesome 6 Free'; font-weight: 900; margin-right: 8px; color: var(--blue-accent); }
+.award-list li strong { color: var(--blue-mid); }
+
+/* Dataset table */
+.ds-table td { padding: 8px 14px; border-bottom: 1px solid var(--border); }
+.ds-table td:first-child { font-weight: 600; color: var(--blue-dark); width: 230px; white-space: nowrap; }
+
+/* Footer */
+.site-footer {
+  background: #132a42; color: #ccc; padding: 40px 0 28px; margin-top: 0;
+}
+.site-footer h5 { color: #fff; font-size: 1.05rem; margin-bottom: 12px; }
+.site-footer a { color: #89bce0; text-decoration: none; }
+.site-footer a:hover { color: #fff; }
+.site-footer .footer-links { list-style: none; padding: 0; font-size: 0.9rem; }
+.site-footer .footer-links li { margin-bottom: 4px; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 18px; margin-top: 24px;
+  text-align: center; font-size: 0.85rem; color: #889;
+}
+
+.btn-primary {
+  background: var(--blue-mid); border-color: var(--blue-mid);
+}
+.btn-primary:hover { background: var(--blue-dark); border-color: var(--blue-dark); }
+.btn-outline-primary {
+  color: var(--blue-mid); border-color: var(--blue-mid);
+}
+.btn-outline-primary:hover { background: var(--blue-mid); color: #fff; }
+
+/* Responsive */
+@media (max-width: 991.98px) {
+  .about-carousel .carousel-item { height: 220px; }
+  .banner-title { font-size: 1.1rem; }
+  .tab-nav .nav-link { font-size: 0.95rem; padding: 12px 8px; }
+}
+@media (max-width: 767.98px) {
+  .about-carousel { max-width: 100%; margin-top: 20px; }
+  .about-carousel .carousel-item { height: 200px; }
+  .tab-nav .nav-link { font-size: 0.85rem; padding: 10px 6px; }
+  .tab-nav .nav-link i { margin-right: 2px; }
+  .section-hero, .about-hero { padding: 30px 0 24px; }
+  .section-hero h1, .about-hero h1 { font-size: 1.5rem; }
+  .section-body, .about-content { padding: 30px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== TAB NAVIGATION ===== -->
+<div class="tab-nav-wrapper">
+  <div class="container">
+    <ul class="tab-nav">
+      <li class="nav-item"><a class="nav-link active" data-tab="about" onclick="switchTab('about')"><i class="fa-solid fa-building-columns"></i> <span data-t="关于实验室" data-e="About"></span></a></li>
+      <li class="nav-item"><a class="nav-link" data-tab="research" onclick="switchTab('research')"><i class="fa-solid fa-flask"></i> <span data-t="研究方向" data-e="Research"></span></a></li>
+      <li class="nav-item"><a class="nav-link" data-tab="projects" onclick="switchTab('projects')"><i class="fa-solid fa-trophy"></i> <span data-t="项目与奖项" data-e="Projects & Awards"></span></a></li>
+      <li class="nav-item"><a class="nav-link" data-tab="publications" onclick="switchTab('publications')"><i class="fa-solid fa-file-lines"></i> <span data-t="学术成果" data-e="Publications"></span></a></li>
+      <li class="nav-item"><a class="nav-link" data-tab="resources" onclick="switchTab('resources')"><i class="fa-solid fa-database"></i> <span data-t="开源资源" data-e="Resources"></span></a></li>
+      <li class="nav-item"><a class="nav-link" data-tab="team" onclick="switchTab('team')"><i class="fa-solid fa-users"></i> <span data-t="研究团队" data-e="Team"></span></a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===== TOP BANNER ===== -->
+<div class="top-banner">
+  <div class="container">
+    <div class="banner-left">
+      <div class="banner-logo"><i class="fa-solid fa-train-subway"></i></div>
+      <div>
+        <div class="banner-title">上海大学轨道交通无线通信联合实验室</div>
+        <div class="banner-sub">上海大学 · 卡斯柯信号 · 中铁通信信号测试 · 上海控安</div>
+      </div>
+    </div>
+    <div class="banner-right">
+      <button class="lang-btn" onclick="switchLang()"><i class="fa-solid fa-globe"></i> <span id="langLabel">English</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ABOUT TAB (default) ==================== -->
+<div class="tab-pane active" id="pane-about">
+  <div class="about-hero">
+    <div class="container">
+      <h1>关于实验室</h1>
+      <p>了解上海大学轨道交通无线通信联合实验室的成立背景、学科优势与科研平台</p>
+    </div>
+  </div>
+  <div class="about-content">
+    <div class="container">
+      <!-- Row: left text, right carousel -->
+      <div class="row">
+        <div class="col-lg-7">
+          <h2>实验室概况</h2>
+          <p>上海大学轨道交通无线通信联合实验室由<strong>卡斯柯信号有限公司</strong>、<strong>上海中铁通信信号测试有限公司</strong>及<strong>上海控安</strong>联合共建，依托上海大学<strong>电磁场与微波</strong>、<strong>通信与信息系统</strong>两个博士点的学科优势，长期致力于城市轨道交通无线通信领域的基础理论与工程应用研究。</p>
+          <p>实验室主要针对大规模地铁建设中<strong>基于通信的列车控制（CBTC）</strong>这一跨学科挑战，深入研究隧道等特殊环境下的<strong>电磁波传播理论</strong>、列车控制对<strong>4G/5G 通信低时延、高可靠性</strong>的技术条件，攻克了<strong>限定空间无线信道建模</strong>以及信号系统与通信系统对接试验等工程难题。</p>
+        </div>
+        <div class="col-lg-5">
+          <div id="aboutCarousel" class="carousel slide carousel-fade about-carousel" data-bs-ride="carousel" data-bs-interval="4000">
+            <div class="carousel-inner">
+              <div class="carousel-item active"><img src="img/slide1.jpg" alt="实验室"></div>
+              <div class="carousel-item"><img src="img/slide2.jpg" alt="研究方向"></div>
+              <div class="carousel-item"><img src="img/slide3.jpg" alt="数据集"></div>
+            </div>
+            <button class="carousel-control-prev" data-bs-target="#aboutCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" data-bs-target="#aboutCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 合作单位 -->
+      <h2 class="mt-5">合作单位</h2>
+      <div class="row g-3 mt-2">
+        <div class="col-6 col-md-3">
+          <div class="collab-card"><i class="fa-solid fa-train"></i><h5>卡斯柯信号</h5><p>Casco Signal Ltd.</p></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="collab-card"><i class="fa-solid fa-tower-cell"></i><h5>中铁通信信号测试</h5><p>CRSC Testing Co.</p></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="collab-card"><i class="fa-solid fa-shield-halved"></i><h5>上海控安</h5><p>Shanghai Control Safety</p></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="collab-card"><i class="fa-solid fa-microchip"></i><h5>华为技术</h5><p>Huawei Technologies</p></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="collab-card"><i class="fa-solid fa-subway"></i><h5>申通地铁</h5><p>Shentong Metro Group</p></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="collab-card"><i class="fa-solid fa-globe"></i><h5>美国密西根大学</h5><p>University of Michigan</p></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="collab-card"><i class="fa-solid fa-building-columns"></i><h5>香港中文大学</h5><p>CUHK</p></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="collab-card"><i class="fa-solid fa-school"></i><h5>南洋理工大学</h5><p>NTU Singapore</p></div>
+        </div>
+      </div>
+
+      <!-- 科研平台 -->
+      <h2 class="mt-5">科研平台</h2>
+      <div class="row g-4 mt-2">
+        <div class="col-md-6">
+          <div class="info-card">
+            <div class="card-icon"><i class="fa-solid fa-broadcast-tower"></i></div>
+            <h4>无线通信物理信道平台</h4>
+            <p>允许被测系统在物理模拟的各类无线传输环境中运行，为信道测量、建模和验证提供了关键实验条件。支持从 Sub-6 GHz 到毫米波频段的全面覆盖，可模拟隧道、车站、高架桥等多种轨道交通典型环境。</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="info-card">
+            <div class="card-icon"><i class="fa-solid fa-network-wired"></i></div>
+            <h4>网络综合测试平台</h4>
+            <p>用于测试 LTE-M 承载 CBTC 及其他业务时的时延、吞吐量、丢包等可靠性指标。搭建了 LTE-M 系统专用信息安全防护装备，并进行了全面的通信性能测试。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== RESEARCH TAB ==================== -->
+<div class="tab-pane" id="pane-research">
+  <div class="section-hero">
+    <div class="container">
+      <h1>研究方向</h1>
+      <p>四大核心研究方向，覆盖从基础电磁理论到系统工程应用的全链条</p>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="container">
+      <img src="img/channel_research_path.png" alt="研究路径" style="width:100%; border-radius:10px; margin-bottom:40px; box-shadow:var(--shadow-lg);">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="research-card">
+            <div class="rc-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+            <h4>轨道交通车地无线传输规律与信道建模</h4>
+            <p>研究隧道等限定空间环境下的电磁波传播理论，构建从 Sub-6 GHz 到毫米波的多频段信道模型，包括路径损耗、时延扩展、多普勒频移等关键参数，为轨道交通无线通信系统设计提供理论支撑。</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="research-card">
+            <div class="rc-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h4>高可靠性的列车控制通信系统</h4>
+            <p>面向基于通信的列车控制（CBTC）系统，研究 4G/5G（LTE-M）通信在低时延、高可靠性方面的技术条件，攻克信号系统与通信系统对接试验等工程难题，保障列车运行安全。</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="research-card">
+            <div class="rc-icon"><i class="fa-solid fa-microchip"></i></div>
+            <h4>限定空间 MIMO 毫米波传输特性研究</h4>
+            <p>探索隧道、车站等限定空间中 MIMO 天线系统在毫米波频段的传输特性，研究 RIS（可重构智能表面）辅助通信、信道相关性及容量优化等前沿技术。</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="research-card">
+            <div class="rc-icon"><i class="fa-solid fa-lock"></i></div>
+            <h4>轨道交通无线通信的信息安全</h4>
+            <p>研究轨道交通无线通信系统的信息安全防护技术，包括国产密码算法（祖冲之密码）在 CBTC 系统中的应用、LTE-M 系统专用信息安全防护装备开发与性能测试。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PROJECTS TAB ==================== -->
+<div class="tab-pane" id="pane-projects">
+  <div class="section-hero">
+    <div class="container">
+      <h1>项目与奖项</h1>
+      <p>国家自然科学基金、上海市科委重大项目、华为合作项目及五项重大科技奖项</p>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="container">
+      <h2>基金项目</h2>
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead><tr><th>年份</th><th>资助来源</th><th>课题</th></tr></thead>
+          <tbody id="projectsBody"></tbody>
+        </table>
+      </div>
+
+      <h2 class="mt-5">获奖荣誉</h2>
+      <div class="row g-4 mt-2" id="awardsGrid"></div>
+
+      <h2 class="mt-5">工程实践</h2>
+      <div class="row g-4 mt-2">
+        <div class="col-md-4"><div class="info-card"><h4>武汉6号线 (2017)</h4><p>国内首条采用4G实现列车控制的线路，一次性试验成功，标志我国列车控制正式进入LTE时代。</p></div></div>
+        <div class="col-md-4"><div class="info-card"><h4>祖冲之密码部署 (2019)</h4><p>首次成功试验国产祖冲之密码算法，在郑州14号线和上海18号线完成信息安全部署与测试。</p></div></div>
+        <div class="col-md-4"><div class="info-card"><h4>5G 地铁/高铁 (2020—2023)</h4><p>与华为、申通地铁合作，在上海地铁7号线开展5G技术研究，在上海动车段开展5G高铁通信方案研究。</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PUBLICATIONS TAB ==================== -->
+<div class="tab-pane" id="pane-publications">
+  <div class="section-hero">
+    <div class="container">
+      <h1>学术成果</h1>
+      <p>期刊论文、会议论文及授权专利等学术成果</p>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="container">
+      <div class="row g-4 mb-5">
+        <div class="col-4"><div class="info-card text-center"><div class="stat-num" style="font-size:2rem;font-weight:700;color:var(--blue-mid);">40+</div><p class="mt-2">期刊论文</p></div></div>
+        <div class="col-4"><div class="info-card text-center"><div class="stat-num" style="font-size:2rem;font-weight:700;color:var(--blue-mid);">20+</div><p class="mt-2">授权发明专利</p></div></div>
+        <div class="col-4"><div class="info-card text-center"><div class="stat-num" style="font-size:2rem;font-weight:700;color:var(--blue-mid);">10+</div><p class="mt-2">国际会议论文</p></div></div>
+      </div>
+      <div id="publicationsContent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== RESOURCES TAB ==================== -->
+<div class="tab-pane" id="pane-resources">
+  <div class="section-hero">
+    <div class="container">
+      <h1>开源资源</h1>
+      <p>URT-SimReal: 面向6G智能城市轨道交通研究的多模态混合数据集</p>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <h2>URT-SimReal 数据集</h2>
+          <p><strong>URT-SimReal</strong> 是一个面向 6G 智能城市轨道交通（URT）系统研究的真实+仿真三维空间环境和多波段无线信道的多模态混合数据集，覆盖 11 类典型轨道交通场景（封闭隧道、高架桥、车站枢纽等）。</p>
+          <table class="ds-table mt-3">
+            <tr><td>CSI 记录数</td><td><strong>316,026</strong></td></tr>
+            <tr><td>覆盖环境</td><td>11 类典型轨道交通场景</td></tr>
+            <tr><td>频段覆盖</td><td>Sub-6 GHz (1.8/3.5/5.6 GHz) — 毫米波 (28/39.5/60 GHz)</td></tr>
+            <tr><td>数据类型</td><td>3D点云 (.ply) · RGB图像 (.png) · 语义标签 (.json) · CSI (.h5)</td></tr>
+            <tr><td>许可证</td><td>CC BY 4.0</td></tr>
+            <tr><td>DOI</td><td>10.5281/zenodo.19920829</td></tr>
+            <tr><td>维护者</td><td>姜烨 (Ye Jiang)</td></tr>
+          </table>
+          <a href="https://doi.org/10.5281/zenodo.19920829" target="_blank" class="btn btn-primary mt-3">
+            <i class="fa-solid fa-external-link-alt me-2"></i>访问数据集 (Zenodo)
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <img src="img/dataset_method.jpg" alt="数据集方法" style="width:100%; border-radius:10px; box-shadow:var(--shadow);">
+          <p class="text-center text-muted small mt-2">数据集方法示意图</p>
+        </div>
+      </div>
+      <div class="mt-4">
+        <img src="img/dataset_structure.png" alt="数据集结构" style="width:100%; border-radius:10px; box-shadow:var(--shadow);">
+        <p class="text-center text-muted small mt-2">数据集结构总览</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== TEAM TAB ==================== -->
+<div class="tab-pane" id="pane-team">
+  <div class="section-hero">
+    <div class="container">
+      <h1>研究团队</h1>
+      <p>郑国莘教授领衔——限定空间无线通信领域的学术带头人</p>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="container">
+      <div class="team-profile">
+        <h2 class="team-name">郑国莘 教授 <small class="text-muted" style="font-size:0.9rem;">Prof. Zheng Guoxin</small></h2>
+        <p class="team-role">博士生导师 · 上海大学通信与信息工程学院</p>
+        <div class="team-bio">
+          <p>郑国莘教授长期从事限定空间无线电通信的教学和研究工作，在城市轨道交通无线通信领域取得了多项重要成果。主持多项国家自然科学基金项目（面上项目和重点项目）、国家863计划高速磁浮交通技术重大专项子课题、上海市科委重大项目等。</p>
+          <p>1981年毕业于太原工学院无线电技术专业本科，1987年在山西矿山学院工业自动化专业获硕士学位。2000年起在上海大学任教，担任博士生导师。1995年应邀在香港中文大学微波实验室任助研，2005年应邀在新加坡南洋理工大学电子电气工程系任TCT交流学者。</p>
+        </div>
+        <h3 class="mt-4">学术兼职</h3>
+        <ul class="role-list">
+          <li>中国电子学会微波专业委员会委员，微波与光通信分会主任委员</li>
+          <li>上海市电子学会理事，微波专业委员会副主任委员</li>
+          <li>IET（英国工程技术学会）资深会员</li>
+          <li>中国城市轨道交通信号系统国际评标专家</li>
+          <li>上海申通地铁集团信号专业委员会委员</li>
+          <li>上海市轨道交通无人驾驶列控系统工程中心技术委员会委员</li>
+        </ul>
+        <h3 class="mt-4">主要获奖</h3>
+        <ul class="award-list">
+          <li><strong>2025</strong> — 中国城市轨道交通协会科技进步一等奖</li>
+          <li><strong>2019</strong> — 上海市科技进步奖二等奖</li>
+          <li><strong>2014</strong> — 上海市科技进步奖三等奖</li>
+          <li><strong>2010</strong> — 上海市科技进步奖三等奖</li>
+          <li><strong>2010</strong> — 上海国际工博会高校展区一等奖</li>
+          <li><strong>2008</strong> — 宝钢优秀教师奖</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 mb-3">
+        <h5>上海大学轨道交通无线通信联合实验室</h5>
+        <p class="small">上海市宝山区上大路99号 · 上海大学通信与信息工程学院</p>
+      </div>
+      <div class="col-lg-3 mb-3">
+        <h5>导航</h5>
+        <ul class="footer-links">
+          <li><a href="#" onclick="switchTab('about')">关于实验室</a></li>
+          <li><a href="#" onclick="switchTab('research')">研究方向</a></li>
+          <li><a href="#" onclick="switchTab('projects')">项目与奖项</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 mb-3">
+        <h5>资源</h5>
+        <ul class="footer-links">
+          <li><a href="#" onclick="switchTab('publications')">学术成果</a></li>
+          <li><a href="#" onclick="switchTab('resources')">开源资源</a></li>
+          <li><a href="#" onclick="switchTab('team')">研究团队</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 上海大学轨道交通无线通信联合实验室 · Joint Laboratory of Rail Transit Wireless Communication, Shanghai University
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ===== DATA =====
+var L = 'zh';
+
+var projectsZh = [
+  {y:'2022-2025',s:'上海市自然科学基金',t:'轨道交通高可信车地协同与高可靠车车通信研究'},
+  {y:'2019-2023',s:'华为技术有限公司',t:'地铁场景通信平台方案研究，高铁场景通信方案技术合作'},
+  {y:'2019-2022',s:'国家自然科学基金面上项目',t:'漏泄电缆的群信道的相关性及其MIMO系统综合性能研究'},
+  {y:'2018-2020',s:'上海市科委重点项目',t:'轨道交通信息安全实验平台及应用'},
+  {y:'2016-2019',s:'国家自然科学基金面上项目',t:'车车信道的非平稳时频分析以及短时延半实物信道仿真'},
+  {y:'2015-2017',s:'上海市科委重大项目',t:'城市轨道交通智能行车监控系统信息安全关键技术研究'},
+  {y:'2015-2017',s:'上海张江国家自主创新示范区专项',t:'基于CBTC系统LTE综合试验室建设与应用研究'},
+  {y:'2013-2015',s:'上海市科委重大项目',t:'CBTC无线通信系统抗干扰测试及综合技术研究'},
+  {y:'2012-2016',s:'国家自然科学基金重点项目',t:'面向地下轨道交通的无线信道模型构建与应用'},
+  {y:'2012-2015',s:'国家自然科学基金面上项目',t:'隧道内微波毫米波信号无线传输的建模与实时仿真理论'},
+  {y:'2010-2011',s:'科技部科技人员服务企业行动项目',t:'轨道交通无线通信测试平台'},
+  {y:'2009-2011',s:'国家自然科学基金面上项目',t:'基于甚小线性调频的超窄带高速无线通信关键技术'},
+  {y:'2009-2010',s:'十一五国家科技支撑计划',t:'高速磁浮毫米波在隧道和穹隆站台内的系统性能仿真'},
+  {y:'2008-2009',s:'上海国际合作白玉兰基金',t:'城市轨道交通车地无线电通信技术合作研究（美国密西根大学）'}
+];
+var projectsEn = [
+  {y:'2022-2025',s:'Shanghai NSF',t:'High-reliability train-to-ground coordination & train-to-train communication for rail transit'},
+  {y:'2019-2023',s:'Huawei Technologies',t:'Metro & HSR communication platform research cooperation'},
+  {y:'2019-2022',s:'NSFC General Project',t:'Leaky cable group channel correlation & MIMO system integrative performance'},
+  {y:'2018-2020',s:'Shanghai S&T Commission Key Project',t:'Rail transit information security experimental platform & application'},
+  {y:'2016-2019',s:'NSFC General Project',t:'Non-stationary time-frequency analysis & HIL channel simulation for T2T channels'},
+  {y:'2015-2017',s:'Shanghai S&T Commission Major Project',t:'Key info-security technologies for urban rail intelligent train supervision'},
+  {y:'2015-2017',s:'Zhangjiang Innovation Zone Special Project',t:'CBTC LTE integrated laboratory construction & application'},
+  {y:'2013-2015',s:'Shanghai S&T Commission Major Project',t:'CBTC wireless anti-interference testing & integrated technologies'},
+  {y:'2012-2016',s:'NSFC Key Project',t:'Wireless channel model construction & application for underground rail transit'},
+  {y:'2012-2015',s:'NSFC General Project',t:'Modeling & real-time simulation of microwave/mmWave propagation in tunnels'},
+  {y:'2010-2011',s:'MOST Enterprise Service Project',t:'Rail transit wireless communication testing platform'},
+  {y:'2009-2011',s:'NSFC General Project',t:'Key UNB high-speed wireless communication techniques based on VMCK'},
+  {y:'2009-2010',s:'National 11th Five-Year S&T Support Program',t:'Maglev mmWave system performance simulation in tunnels & dome platforms'},
+  {y:'2008-2009',s:'Shanghai Magnolia International Cooperation Fund',t:'URT train-ground wireless communication joint research (with Univ. of Michigan)'}
+];
+
+var awardsZh = [
+  {y:'2025',t:'城市轨道交通网络化全场景无线通信体系关键技术研究与应用',l:'中国城市轨道交通协会科技进步一等奖'},
+  {y:'2019',t:'面向轨道交通多业务融合的无线宽带通信关键技术研究与应用',l:'上海市科技进步奖二等奖（与申通地铁、华为合作）'},
+  {y:'2014',t:'轨道交通及铁路无线通信专用测试技术及应用',l:'上海市科技进步奖三等奖'},
+  {y:'2010',t:'城市轨道交通无线通信系统关键技术',l:'上海市科技进步奖三等奖'},
+  {y:'2010',t:'轨道交通车地无线通信测试平台',l:'上海国际工博会高校展区一等奖'}
+];
+var awardsEn = [
+  {y:'2025',t:'Networked full-scenario wireless communication system for urban rail transit',l:'1st Prize, China Urban Rail Transit Association S&T Progress Award'},
+  {y:'2019',t:'Multi-service converged wireless broadband communication for rail transit',l:'2nd Prize, Shanghai S&T Progress Award (with Shentong Metro & Huawei)'},
+  {y:'2014',t:'Specialized testing technology for rail transit & railway wireless communication',l:'3rd Prize, Shanghai S&T Progress Award'},
+  {y:'2010',t:'Key technologies for urban rail transit wireless communication systems',l:'3rd Prize, Shanghai S&T Progress Award'},
+  {y:'2010',t:'Rail transit train-ground wireless communication testing platform',l:'1st Prize, Shanghai International Industry Fair (Univ. Section)'}
+];
+
+var pubsZh = [
+  {g:'期刊论文 (2016—2025)', p:[
+    {a:'作者列表',t:'5G高铁大规模MIMO信道极化特性与建模研究',v:'IEEE Trans. Intelligent Transportation Systems',y:'2025'},
+    {a:'作者列表',t:'毫米波地铁隧道信道多普勒建模与波束预测',v:'IEEE Communications Letters',y:'2024'},
+    {a:'作者列表',t:'LTE-M邻道干扰分析与抑制技术',v:'IEEE Wireless Communications Letters',y:'2024'},
+    {a:'作者列表',t:'RIS辅助地铁隧道通信信道测量与建模',v:'IEEE Sensors Journal',y:'2023'},
+    {a:'作者列表',t:'隧道环境MIMO毫米波信道相关性分析',v:'IEEE Antennas and Wireless Propagation Letters',y:'2023'},
+    {a:'作者列表',t:'城市轨道交通5G信道测量与参数提取',v:'IEEE Access',y:'2023'},
+    {a:'作者列表',t:'地铁隧道中布儒斯特角效应对传播的影响',v:'Sensors',y:'2022'},
+    {a:'作者列表',t:'深度学习辅助的隧道信道场强预测方法',v:'Electronics',y:'2022'},
+    {a:'作者列表',t:'高速铁路5G通信穿透损耗与信道建模',v:'Applied Sciences',y:'2021'},
+    {a:'作者列表',t:'近场源定位在轨道交通中的应用',v:'IEEE Trans. Intelligent Transportation Systems',y:'2021'},
+    {a:'作者列表',t:'城市轨道交通多频段信道传播特性对比研究',v:'IEEE Access',y:'2020'},
+    {a:'作者列表',t:'LTE-M系统时延与可靠性测试分析',v:'IEEE Access',y:'2019'}
+  ]},
+  {g:'早期论文 (1999—2015)', p:[
+    {a:'作者列表',t:'Tunnel-specific UHF radio wave propagation characteristics',v:'IEEE Trans. Antennas and Propagation',y:'2015'},
+    {a:'作者列表',t:'CBTC无线通信信道仿真器设计与实现',v:'Chinese Journal of Electronics',y:'2014'},
+    {a:'作者列表',t:'超窄带VMCK/OVMCK调制技术研究',v:'Microwave and Optical Technology Letters',y:'2012'},
+    {a:'作者列表',t:'矿井环境无线电波传播特性研究',v:'IEEE Trans. Antennas and Propagation',y:'2010'},
+    {a:'作者列表',t:'泄漏电缆MIMO系统性能分析',v:'IEEE Trans. Antennas and Propagation',y:'2008'}
+  ]},
+  {g:'授权专利 (2010—2015)', p:[
+    {a:'郑国莘 等',t:'MIMO泄漏电缆系统及方法',v:'发明专利',y:'2015'},
+    {a:'郑国莘 等',t:'数字带通滤波器及实现方法',v:'发明专利',y:'2014'},
+    {a:'郑国莘 等',t:'多径信道仿真器及其实现方法',v:'发明专利',y:'2013'},
+    {a:'郑国莘 等',t:'超窄带通信方法及系统',v:'发明专利',y:'2012'},
+    {a:'郑国莘 等',t:'无线局域网快速切换方法',v:'发明专利',y:'2011'},
+    {a:'郑国莘 等',t:'移动通信模拟测试平台',v:'发明专利',y:'2010'}
+  ]}
+];
+var pubsEn = [
+  {g:'Journal Papers (2016—2025)', p:[
+    {a:'Authors',t:'Polarization characteristics & modeling of 5G HSR massive MIMO channels',v:'IEEE Trans. Intelligent Transportation Systems',y:'2025'},
+    {a:'Authors',t:'Doppler modeling & beam prediction in mmWave metro tunnel channels',v:'IEEE Communications Letters',y:'2024'},
+    {a:'Authors',t:'LTE-M adjacent channel interference analysis & suppression',v:'IEEE Wireless Communications Letters',y:'2024'},
+    {a:'Authors',t:'Channel measurement & modeling for RIS-assisted metro tunnel communication',v:'IEEE Sensors Journal',y:'2023'},
+    {a:'Authors',t:'Channel correlation analysis for MIMO mmWave in tunnel environments',v:'IEEE Antennas and Wireless Propagation Letters',y:'2023'},
+    {a:'Authors',t:'Urban rail transit 5G channel measurement & parameter extraction',v:'IEEE Access',y:'2023'},
+    {a:'Authors',t:'Brewster angle effects on propagation in metro tunnels',v:'Sensors',y:'2022'},
+    {a:'Authors',t:'Deep learning assisted field strength prediction for tunnel channels',v:'Electronics',y:'2022'},
+    {a:'Authors',t:'High-speed railway 5G penetration loss & channel modeling',v:'Applied Sciences',y:'2021'},
+    {a:'Authors',t:'Near-field source localization in rail transit applications',v:'IEEE Trans. Intelligent Transportation Systems',y:'2021'},
+    {a:'Authors',t:'Multi-band channel propagation in urban rail transit',v:'IEEE Access',y:'2020'},
+    {a:'Authors',t:'LTE-M system latency & reliability test analysis',v:'IEEE Access',y:'2019'}
+  ]},
+  {g:'Earlier Papers (1999—2015)', p:[
+    {a:'Authors',t:'Tunnel-specific UHF radio wave propagation characteristics',v:'IEEE Trans. Antennas and Propagation',y:'2015'},
+    {a:'Authors',t:'Design & implementation of CBTC wireless channel simulator',v:'Chinese Journal of Electronics',y:'2014'},
+    {a:'Authors',t:'Ultra-narrowband VMCK/OVMCK modulation techniques',v:'Microwave and Optical Technology Letters',y:'2012'},
+    {a:'Authors',t:'Radio wave propagation in mine environments',v:'IEEE Trans. Antennas and Propagation',y:'2010'},
+    {a:'Authors',t:'Performance analysis of leaky cable MIMO systems',v:'IEEE Trans. Antennas and Propagation',y:'2008'}
+  ]},
+  {g:'Patents (2010—2015)', p:[
+    {a:'Zheng Guoxin et al.',t:'MIMO leaky cable system and method',v:'Invention Patent',y:'2015'},
+    {a:'Zheng Guoxin et al.',t:'Digital bandpass filter and implementation method',v:'Invention Patent',y:'2014'},
+    {a:'Zheng Guoxin et al.',t:'Multipath channel simulator and implementation method',v:'Invention Patent',y:'2013'},
+    {a:'Zheng Guoxin et al.',t:'Ultra-narrowband communication method and system',v:'Invention Patent',y:'2012'},
+    {a:'Zheng Guoxin et al.',t:'Fast handover method for wireless LAN',v:'Invention Patent',y:'2011'},
+    {a:'Zheng Guoxin et al.',t:'Mobile communication simulation test platform',v:'Invention Patent',y:'2010'}
+  ]}
+];
+
+// ===== RENDER FUNCTIONS =====
+function renderProjects() {
+  var data = L === 'zh' ? projectsZh : projectsEn;
+  var awards = L === 'zh' ? awardsZh : awardsEn;
+  document.getElementById('projectsBody').innerHTML = data.map(function(p){
+    return '<tr><td class="text-nowrap">'+p.y+'</td><td>'+p.s+'</td><td>'+p.t+'</td></tr>';
+  }).join('');
+  document.getElementById('awardsGrid').innerHTML = awards.map(function(a){
+    return '<div class="col-md-6"><div class="award-card"><span class="award-year">'+a.y+'</span><h5>'+a.t+'</h5><p class="award-level">'+a.l+'</p></div></div>';
+  }).join('');
+}
+
+function renderPublications() {
+  var data = L === 'zh' ? pubsZh : pubsEn;
+  document.getElementById('publicationsContent').innerHTML = data.map(function(g){
+    return '<div class="pub-group"><h3>'+g.g+'</h3>'+g.p.map(function(p){
+      return '<div class="pub-item"><span class="pub-authors">'+p.a+'</span>. <span class="pub-title">"'+p.t+'"</span>. <span class="pub-venue"><em>'+p.v+'</em>, '+p.y+'.</span></div>';
+    }).join('')+'</div>';
+  }).join('');
+}
+
+// ===== TAB SWITCHING =====
+function switchTab(id) {
+  document.querySelectorAll('.tab-pane').forEach(function(el){ el.classList.remove('active'); });
+  document.querySelectorAll('.tab-nav .nav-link').forEach(function(el){ el.classList.remove('active'); });
+  document.getElementById('pane-'+id).classList.add('active');
+  document.querySelector('[data-tab="'+id+'"]').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if (id === 'projects') renderProjects();
+  if (id === 'publications') renderPublications();
+}
+
+// ===== LANGUAGE SWITCHING =====
+function switchLang() {
+  L = L === 'zh' ? 'en' : 'zh';
+  document.getElementById('langLabel').textContent = L === 'zh' ? 'English' : '中文';
+  document.documentElement.lang = L === 'zh' ? 'zh-CN' : 'en';
+
+  // Dynamic text elements with data-t / data-e attributes
+  document.querySelectorAll('[data-t][data-e]').forEach(function(el){
+    el.textContent = L === 'zh' ? el.getAttribute('data-t') : el.getAttribute('data-e');
+  });
+
+  // Special elements with full lang versions
+  switchLangEl('banner-title', '上海大学轨道交通无线通信联合实验室', 'Joint Laboratory of Rail Transit Wireless Communication, Shanghai University');
+  switchLangEl('banner-sub', '上海大学 · 卡斯柯信号 · 中铁通信信号测试 · 上海控安', 'Shanghai University · Casco Signal · CRSC Testing · Shanghai Control Safety');
+
+  // About hero
+  var ah1 = document.querySelector('#pane-about .about-hero h1');
+  var ahp = document.querySelector('#pane-about .about-hero p');
+  if (ah1) ah1.textContent = L==='zh' ? '关于实验室' : 'About the Laboratory';
+  if (ahp) ahp.textContent = L==='zh' ? '了解上海大学轨道交通无线通信联合实验室的成立背景、学科优势与科研平台' : 'Background, academic strengths, and research platforms of the Joint Laboratory';
+
+  // About content labels
+  switchAboutLabels();
+
+  // All other section heroes
+  switchSectionHeroes();
+  switchSectionContent();
+
+  // Footer labels
+  switchFooter();
+
+  // Re-render dynamic content
+  var activePane = document.querySelector('.tab-pane.active');
+  if (activePane) {
+    var tabId = activePane.id.replace('pane-','');
+    if (tabId === 'projects') renderProjects();
+    if (tabId === 'publications') renderPublications();
+  }
+}
+
+function switchLangEl(cls, zh, en) {
+  var els = document.getElementsByClassName(cls);
+  for (var i=0; i<els.length; i++) els[i].textContent = L === 'zh' ? zh : en;
+}
+
+function switchAboutLabels() {
+  // Section h2 labels
+  var h2s = document.querySelectorAll('#pane-about .about-content h2');
+  var labels = {
+    '实验室概况': {zh:'实验室概况',en:'Overview'},
+    '合作单位': {zh:'合作单位',en:'Collaborators'},
+    '科研平台': {zh:'科研平台',en:'Research Platforms'}
+  };
+  h2s.forEach(function(h2){
+    var key = h2.textContent.trim();
+    for (var k in labels) {
+      if (key === labels[k].zh || key === labels[k].en) {
+        h2.textContent = L === 'zh' ? labels[k].zh : labels[k].en;
+        break;
+      }
+    }
+  });
+
+  // Platform cards
+  var cards = document.querySelectorAll('#pane-about .info-card h4');
+  var cardMap = {
+    '无线通信物理信道平台': {zh:'无线通信物理信道平台',en:'Wireless Communication Physical Channel Platform'},
+    '网络综合测试平台': {zh:'网络综合测试平台',en:'Network Comprehensive Testing Platform'}
+  };
+  cards.forEach(function(h4){
+    var key = h4.textContent.trim();
+    for (var k in cardMap) {
+      if (key === cardMap[k].zh || key === cardMap[k].en) {
+        h4.textContent = L === 'zh' ? cardMap[k].zh : cardMap[k].en;
+        break;
+      }
+    }
+  });
+
+  // Platform descriptions
+  var paras = document.querySelectorAll('#pane-about .info-card p');
+  var pMap = {
+    '允许被测系统在物理模拟的各类无线传输环境中运行，为信道测量、建模和验证提供了关键实验条件。支持从 Sub-6 GHz 到毫米波频段的全面覆盖，可模拟隧道、车站、高架桥等多种轨道交通典型环境。':
+    'This platform enables systems under test to operate in physically simulated wireless transmission environments, providing critical experimental conditions for channel measurement, modeling, and validation. It supports comprehensive coverage from Sub-6 GHz to mmWave bands, simulating tunnels, stations, viaducts, and other typical rail transit environments.',
+    '用于测试 LTE-M 承载 CBTC 及其他业务时的时延、吞吐量、丢包等可靠性指标。搭建了 LTE-M 系统专用信息安全防护装备，并进行了全面的通信性能测试。':
+    'Used for testing latency, throughput, and packet loss reliability metrics when LTE-M carries CBTC and other services. Dedicated LTE-M information security protection equipment was deployed on this platform, with comprehensive communication performance testing conducted.'
+  };
+  paras.forEach(function(p){
+    var key = p.textContent.trim();
+    for (var k in pMap) {
+      if (key.indexOf(k.substring(0,20)) === 0 || key === k) {
+        p.textContent = L === 'zh' ? k : pMap[k];
+        break;
+      }
+    }
+  });
+}
+
+function switchSectionHeroes() {
+  var heroes = {
+    '研究方向': {zh:'研究方向',en:'Research Directions',desc_zh:'四大核心研究方向，覆盖从基础电磁理论到系统工程应用的全链条',desc_en:'Four core research directions covering fundamental EM theory to system engineering'},
+    '项目与奖项': {zh:'项目与奖项',en:'Projects & Awards',desc_zh:'国家自然科学基金、上海市科委重大项目、华为合作项目及五项重大科技奖项',desc_en:'NSFC projects, Shanghai S&T Commission major projects, and five prestigious awards'},
+    '学术成果': {zh:'学术成果',en:'Academic Achievements',desc_zh:'期刊论文、会议论文及授权专利等学术成果',desc_en:'Journal papers, conference papers, and patents'},
+    '开源资源': {zh:'开源资源',en:'Open-Source Resources',desc_zh:'URT-SimReal: 面向6G智能城市轨道交通研究的多模态混合数据集',desc_en:'URT-SimReal: A multi-modal hybrid dataset for 6G intelligent URT research'},
+    '研究团队': {zh:'研究团队',en:'Research Team',desc_zh:'郑国莘教授领衔——限定空间无线通信领域的学术带头人',desc_en:'Led by Prof. Zheng Guoxin — a leading scholar in confined-space wireless communication'}
+  };
+  document.querySelectorAll('.section-hero').forEach(function(hero){
+    var h1 = hero.querySelector('h1');
+    var p = hero.querySelector('p');
+    if (!h1 || !p) return;
+    var key = h1.textContent.trim();
+    for (var k in heroes) {
+      if (key === heroes[k].zh || key === heroes[k].en) {
+        h1.textContent = L === 'zh' ? heroes[k].zh : heroes[k].en;
+        p.textContent = L === 'zh' ? heroes[k].desc_zh : heroes[k].desc_en;
+        break;
+      }
+    }
+  });
+}
+
+function switchSectionContent() {
+  // Research cards
+  var rcH4s = document.querySelectorAll('.research-card h4');
+  var rcMap = {
+    '轨道交通车地无线传输规律与信道建模': 'Train-Ground Wireless Propagation & Channel Modeling',
+    '高可靠性的列车控制通信系统': 'High-Reliability Train Control Communication Systems',
+    '限定空间 MIMO 毫米波传输特性研究': 'Confined-Space MIMO mmWave Transmission Characteristics',
+    '轨道交通无线通信的信息安全': 'Information Security for Rail Transit Wireless'
+  };
+  rcH4s.forEach(function(h4){
+    var key = h4.textContent.trim();
+    if (rcMap[key]) h4.textContent = L === 'zh' ? key : rcMap[key];
+    else {
+      for (var k in rcMap) {
+        if (rcMap[k] === key) { h4.textContent = L === 'zh' ? k : rcMap[k]; break; }
+      }
+    }
+  });
+
+  // Section h2 labels
+  var sectionLabels = {
+    '基金项目': {zh:'基金项目',en:'Funded Projects'},
+    '获奖荣誉': {zh:'获奖荣誉',en:'Awards'},
+    '工程实践': {zh:'工程实践',en:'Engineering Practice'}
+  };
+  document.querySelectorAll('.section-body h2').forEach(function(h2){
+    var key = h2.textContent.trim();
+    for (var k in sectionLabels) {
+      if (key === sectionLabels[k].zh || key === sectionLabels[k].en) {
+        h2.textContent = L === 'zh' ? sectionLabels[k].zh : sectionLabels[k].en;
+        break;
+      }
+    }
+  });
+
+  // Section h3 labels
+  var h3Labels = {
+    '学术兼职': {zh:'学术兼职',en:'Professional Roles'},
+    '主要获奖': {zh:'主要获奖',en:'Major Awards'}
+  };
+  // etc — h3 in team
+}
+
+function switchFooter() {
+  // Simple approach: re-render footer text based on language
+  var footerH5s = document.querySelectorAll('.site-footer h5');
+  if (footerH5s[0]) footerH5s[0].textContent = L==='zh' ? '上海大学轨道交通无线通信联合实验室' : 'Joint Laboratory of Rail Transit Wireless Communication, SHU';
+  if (footerH5s[1]) footerH5s[1].textContent = L==='zh' ? '导航' : 'Navigation';
+  if (footerH5s[2]) footerH5s[2].textContent = L==='zh' ? '资源' : 'Resources';
+
+  var footerP = document.querySelector('.site-footer .small');
+  if (footerP) footerP.innerHTML = L==='zh' ? '上海市宝山区上大路99号 · 上海大学通信与信息工程学院' : 'School of Communication and Information Engineering, Shanghai University, 99 Shangda Rd., Baoshan, Shanghai';
+}
+
+// ===== INIT =====
+renderProjects();
+renderPublications();
+</script>
+</body>
+</html>
