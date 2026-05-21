@@ -334,6 +334,49 @@ body {
 }
 .btn-outline-primary:hover { background: var(--blue-mid); color: #fff; }
 
+/* ===== TEAM ACCORDION ===== */
+.team-accordion { max-width: 100%; }
+.team-item {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 10px; margin-bottom: 16px;
+  box-shadow: var(--shadow); overflow: hidden;
+}
+.team-item-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 28px; cursor: pointer; background: var(--blue-bg);
+  transition: background 0.2s; user-select: none;
+}
+.team-item-header:hover { background: var(--blue-light); }
+.team-item-header .team-header-left h3 {
+  margin: 0; font-size: 1.25rem; font-weight: 600; color: var(--blue-dark);
+}
+.team-item-header .team-header-sub {
+  font-size: 0.95rem; color: var(--text-muted); margin-top: 2px;
+}
+.team-item-header .toggle-icon {
+  font-size: 1.1rem; color: var(--blue-accent);
+  transition: transform 0.3s ease; flex-shrink: 0; margin-left: 16px;
+}
+.team-item.open .team-item-header .toggle-icon { transform: rotate(180deg); }
+.team-item-body {
+  display: grid; grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease;
+}
+.team-item.open .team-item-body { grid-template-rows: 1fr; }
+.team-item-body-inner { overflow: hidden; padding: 0 32px 28px; }
+.team-item .team-photo {
+  float: right; width: 160px; height: 210px; object-fit: cover;
+  border-radius: 8px; margin: 6px 0 16px 24px; box-shadow: var(--shadow);
+}
+.team-item .team-name { font-size: 1.6rem; font-weight: 700; color: var(--blue-dark); }
+.team-item .team-role { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 14px; }
+.team-ext-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 14px; color: var(--blue-accent);
+  font-size: 1rem; font-weight: 500; text-decoration: none;
+}
+.team-ext-link:hover { color: var(--blue-mid); text-decoration: underline; }
+
 /* Responsive */
 @media (max-width: 991.98px) {
   .about-carousel .carousel-item { height: 220px; }
@@ -753,81 +796,175 @@ body {
 
 <!-- ==================== TEAM TAB ==================== -->
 <div class="tab-pane" id="pane-team">
-  <div class="container">
-    <div class="team-profile">
-      <img src="img/Zheng.jpg" alt="郑国莘教授" class="team-photo">
-      <h2 class="team-name">郑国莘 教授 <small class="text-muted" style="font-size:1.05rem;">Prof. Zheng Guoxin</small></h2>
-      <p class="team-role">博士生导师 · 上海大学通信与信息工程学院</p>
-      <div class="team-bio">
-        <p>郑国莘教授长期从事限定空间无线电通信的教学和研究工作，在城市轨道交通无线通信领域取得了多项重要成果。主持多项国家自然科学基金项目（面上项目和重点项目）、国家863计划高速磁浮交通技术重大专项子课题、上海市科委重大项目等。</p>
-        <p>1981年毕业于太原工学院无线电技术专业本科，1987年在山西矿山学院工业自动化专业获硕士学位。2000年起在上海大学任教，担任博士生导师。1995年应邀在香港中文大学微波实验室任助研，2005年应邀在新加坡南洋理工大学电子电气工程系任TCT交流学者。</p>
+  <div class="container py-5">
+    <div class="team-accordion">
+
+      <!-- 郑国莘 -->
+      <div class="team-item open">
+        <div class="team-item-header" onclick="toggleTeamItem(this)">
+          <div class="team-header-left">
+            <h3>郑国莘 教授 <small class="text-muted" style="font-size:0.95rem;">Prof. Zheng Guoxin</small></h3>
+            <div class="team-header-sub">博士生导师 · 上海大学通信与信息工程学院</div>
+          </div>
+          <i class="fa-solid fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="team-item-body">
+          <div class="team-item-body-inner">
+            <img src="img/Zheng.jpg" alt="郑国莘教授" class="team-photo">
+            <div class="team-name">郑国莘 教授 <small class="text-muted" style="font-size:1.05rem;">Prof. Zheng Guoxin</small></div>
+            <p class="team-role">博士生导师 · 上海大学通信与信息工程学院</p>
+            <div class="team-bio">
+              <p>郑国莘教授长期从事限定空间无线电通信的教学和研究工作，在城市轨道交通无线通信领域取得了多项重要成果。主持多项国家自然科学基金项目（面上项目和重点项目）、国家863计划高速磁浮交通技术重大专项子课题、上海市科委重大项目等。</p>
+              <p>1981年毕业于太原工学院无线电技术专业本科，1987年在山西矿山学院工业自动化专业获硕士学位。2000年起在上海大学任教，担任博士生导师。1995年应邀在香港中文大学微波实验室任助研，2005年应邀在新加坡南洋理工大学电子电气工程系任TCT交流学者。</p>
+            </div>
+
+            <h3 class="mt-4">学术兼职</h3>
+            <ul class="role-list">
+              <li>中国电子学会微波专业委员会委员，微波与光通信分会主任委员</li>
+              <li>上海市电子学会理事，微波专业委员会副主任委员。IET 资深会员</li>
+              <li>中国城市轨道交通信号系统国际评标专家</li>
+              <li>上海市电机工程学会轨道交通电气化专业委员会委员</li>
+              <li>上海交通电子行业协会轨道交通专家委员会委员</li>
+              <li>上海申通地铁集团信号专业委员会委员</li>
+              <li>上海市轨道交通无人驾驶列控系统工程技术中心技术委员会委员</li>
+            </ul>
+
+            <h3 class="mt-4">获奖</h3>
+            <ul class="award-list">
+              <li>2025年 "城市轨道交通网络化全场景无线通信体系关键技术研究与应用" 中国城市轨道交通协会科技进步一等奖</li>
+              <li>2019年 "面向轨道交通多业务融合的无线宽带通信关键技术研究与应用" 上海市科技进步奖二等奖</li>
+              <li>2014年 "轨道交通及铁路无线通信专用测试技术及应用" 上海市科技进步奖三等奖</li>
+              <li>2010年 "城市轨道交通无线通信系统关键技术" 上海市科技进步奖三等奖</li>
+              <li>2010年 "轨道交通车地无线通信测试平台" 上海国际工博会高校展区一等奖</li>
+              <li>2009年 "探索在美学意境中实践通信原理的教学" 上海市级教学成果二等奖</li>
+              <li>2008年 "探索在美学意境中实践通信原理的教学" 上海大学校级教学成果特等奖</li>
+              <li>2008年 宝钢优秀教师奖</li>
+              <li>2000年 "地下限定空间中特高频UHF无线电波传播机理的研究" 山西省科技进步二等奖</li>
+            </ul>
+
+            <h3 class="mt-4">科研项目</h3>
+            <ul class="role-list" id="projList">
+              <li>2022—2025 主持上海市自然科学基金项目（22ZR1422200），轨道交通高可信车地协同与高可靠车车通信研究</li>
+              <li>2022—2024 主持上海中铁通号测试公司项目，LTE通信环境随车检测系统；无线干扰信号检测等</li>
+              <li>2020—2023 主持华为技术有限公司项目，地铁5G信道的研究；高铁5G穿透车厢的通信等</li>
+              <li>2019—2022 主持国家自然科学基金面上项目（61871261），漏泄电缆的群信道的相关性及其MIMO系统综合性能的研究</li>
+              <li>2018—2020 主持上海市科委重点项目（18511105705），轨道交通信息安全实验平台及应用</li>
+            </ul>
+            <ul class="role-list" id="projMore" style="display:none;">
+              <li>2016—2019 主持国家自然科学基金面上项目（61571282），车车信道的非平稳时频分析以及短时延半实物信道仿真</li>
+              <li>2015—2017 主持上海市科委重大项目（15511107203），城市轨道交通智能行车监控系统信息安全关键技术研究</li>
+              <li>2015—2017 主持上海张江国家自主创新示范区专项（201505-ZB-C101-008），基于CBTC系统LTE综合试验室建设与应用研究</li>
+              <li>2013—2015 主持上海市科委重大项目（13511503003），CBTC无线通信系统抗干扰测试及综合技术研究</li>
+              <li>2013年 主持上海申通集团 CBTC系统改进研究</li>
+              <li>2013年 主持上海申通集团 增强型CBTC系统预研究</li>
+              <li>2012—2016 负责国家自然科学基金重点项目（61132003），面向地下轨道交通的无线信道模型构建与应用</li>
+              <li>2012—2015 主持国家自然科学基金面上项目（61171086），隧道内微波毫米波信号无线传输的建模与实时仿真理论</li>
+              <li>2012年 主持上海申通集团 轨道交通网络通信系统检测技术研究</li>
+              <li>2011年 主持上海申通集团 CBTC无线通信方式与相关技术研究</li>
+              <li>2010—2011 主持科技部科技人员服务企业行动项目(2009GJC00045)，轨道交通无线通信测试平台</li>
+              <li>2009—2011 主持国家自然科学基金面上项目（60872021），基于甚小线性调频的超窄带高速无线通信关键技术研究</li>
+              <li>2009—2010 主持"十一五"国家科技支撑计划子课题(115-06-YK-018)，高速磁浮毫米波在隧道和穹隆站台内通信的系统性能仿真</li>
+              <li>2009—2010 主持"十一五"国家科技支撑计划子课题(115-04-YK-031)，磁浮无线电系统场强测试技术研究</li>
+              <li>2008—2009 主持上海国际合作白玉兰基金(2008B050)，城市轨道交通车地无线电通信技术合作研究（美国密西根大学）</li>
+              <li>2007—2009 承担上海市经委重大技术装备研制专项，轨道交通列车控制系统中无线通信系统的研发</li>
+              <li>2007—2008 主持国家863计划子课题（ZX-06-800-025），毫米波通信系统在隧道内传播特性的测试</li>
+              <li>2005—2008 主持上海欣民通信有限公司项目，轨道交通车载视频监控系统研究</li>
+              <li>2005—2007 负责上海市科委国际合作项目，UWB关键技术的研究</li>
+              <li>2005—2006 参加上海市申通轨道交通研究咨询有限公司项目，轨道交通车载视频监控系统</li>
+              <li>2006—2007 参加上海市申通轨道交通研究咨询有限公司项目，5.8GHz无线频段车-地视频传输研究</li>
+              <li>2005—2006 主持国家863计划高速磁浮交通技术重大专项子课题，毫米波在特殊空间传播规律的研究</li>
+              <li>2004—2006 主持上海市科委重点项目，城市轨道交通无线通信系统互联互通的研究</li>
+              <li>2004—2005 主持制定上海市城市建设地方标准，城市轨道交通无线通信系统技术规范</li>
+              <li>2002—2003 主持上海申通集团委托项目，上海轨道交通无线通信系统组网方案的研究</li>
+              <li>2001—2002 参加上海市科委重大项目，蓝牙技术应用研究</li>
+              <li>2000—2002 主持国家自然科学基金项目，工作面及顺槽个人通信系统</li>
+              <li>2000—2001 主持山西省科委自然基金项目，矿用电器的电磁兼容性研究</li>
+            </ul>
+            <a href="#" onclick="document.getElementById('projMore').style.display='block';this.style.display='none';return false;" class="expand-link" id="projExpand">
+              <i class="fa-solid fa-chevron-down"></i> 展开全部科研项目（共32项）
+            </a>
+          </div>
+        </div>
       </div>
 
-      <h3 class="mt-4">学术兼职</h3>
-      <ul class="role-list">
-        <li>中国电子学会微波专业委员会委员，微波与光通信分会主任委员</li>
-        <li>上海市电子学会理事，微波专业委员会副主任委员。IET 资深会员</li>
-        <li>中国城市轨道交通信号系统国际评标专家</li>
-        <li>上海市电机工程学会轨道交通电气化专业委员会委员</li>
-        <li>上海交通电子行业协会轨道交通专家委员会委员</li>
-        <li>上海申通地铁集团信号专业委员会委员</li>
-        <li>上海市轨道交通无人驾驶列控系统工程技术中心技术委员会委员</li>
-      </ul>
+      <!-- 金彦亮 -->
+      <div class="team-item">
+        <div class="team-item-header" onclick="toggleTeamItem(this)">
+          <div class="team-header-left">
+            <h3>金彦亮 副教授</h3>
+            <div class="team-header-sub">上海大学通信与信息工程学院</div>
+          </div>
+          <i class="fa-solid fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="team-item-body">
+          <div class="team-item-body-inner">
+            <p>金彦亮，副教授。2005年获得上海交通大学通信与信息系统专业博士学位。</p>
+            <a href="https://scie-ce.shu.edu.cn/info/1091/1052.htm" target="_blank" class="team-ext-link">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> 查看详细资料
+            </a>
+          </div>
+        </div>
+      </div>
 
-      <h3 class="mt-4">获奖</h3>
-      <ul class="award-list">
-        <li>2025年 "城市轨道交通网络化全场景无线通信体系关键技术研究与应用" 中国城市轨道交通协会科技进步一等奖</li>
-        <li>2019年 "面向轨道交通多业务融合的无线宽带通信关键技术研究与应用" 上海市科技进步奖二等奖</li>
-        <li>2014年 "轨道交通及铁路无线通信专用测试技术及应用" 上海市科技进步奖三等奖</li>
-        <li>2010年 "城市轨道交通无线通信系统关键技术" 上海市科技进步奖三等奖</li>
-        <li>2010年 "轨道交通车地无线通信测试平台" 上海国际工博会高校展区一等奖</li>
-        <li>2009年 "探索在美学意境中实践通信原理的教学" 上海市级教学成果二等奖</li>
-        <li>2008年 "探索在美学意境中实践通信原理的教学" 上海大学校级教学成果特等奖</li>
-        <li>2008年 宝钢优秀教师奖</li>
-        <li>2000年 "地下限定空间中特高频UHF无线电波传播机理的研究" 山西省科技进步二等奖</li>
-      </ul>
+      <!-- 王瑞 -->
+      <div class="team-item">
+        <div class="team-item-header" onclick="toggleTeamItem(this)">
+          <div class="team-header-left">
+            <h3>王瑞 教授</h3>
+            <div class="team-header-sub">IEEE高级会员 · 上海大学通信与信息工程学院</div>
+          </div>
+          <i class="fa-solid fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="team-item-body">
+          <div class="team-item-body-inner">
+            <p>王瑞，教授，博士，山西运城人。IEEE高级会员，中国电子学会高级会员，中国研究生电子设计竞赛专家委员会委员、评审专家，国家自然科学基金委员会（NSFC）信息学部函评专家，上海市科技专家库专家。</p>
+            <p>主要研究领域：天地一体化物联网技术、智能信息处理、模式识别、几何代数。近年来主持国家级科研项目4项、国家级教改项目1项、企业委托项目40余项。出版专著3部，发表学术论文130余篇，其中SCI检索50余篇，创新实践教材4本，获国家专利授权3项，软件著作权6项。指导学生科创竞赛获国家级一等奖2项、二等奖4项、三等奖5项。2017年获宝钢优秀教师奖，2018年获上海市教学成果一等奖。</p>
+            <a href="https://scie.shu.edu.cn/Prof/wangrui.htm" target="_blank" class="team-ext-link">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> 查看详细资料
+            </a>
+          </div>
+        </div>
+      </div>
 
-      <h3 class="mt-4">科研项目</h3>
-      <ul class="role-list" id="projList">
-        <li>2022—2025 主持上海市自然科学基金项目（22ZR1422200），轨道交通高可信车地协同与高可靠车车通信研究</li>
-        <li>2022—2024 主持上海中铁通号测试公司项目，LTE通信环境随车检测系统；无线干扰信号检测等</li>
-        <li>2020—2023 主持华为技术有限公司项目，地铁5G信道的研究；高铁5G穿透车厢的通信等</li>
-        <li>2019—2022 主持国家自然科学基金面上项目（61871261），漏泄电缆的群信道的相关性及其MIMO系统综合性能的研究</li>
-        <li>2018—2020 主持上海市科委重点项目（18511105705），轨道交通信息安全实验平台及应用</li>
-      </ul>
-      <ul class="role-list" id="projMore" style="display:none;">
-        <li>2016—2019 主持国家自然科学基金面上项目（61571282），车车信道的非平稳时频分析以及短时延半实物信道仿真</li>
-        <li>2015—2017 主持上海市科委重大项目（15511107203），城市轨道交通智能行车监控系统信息安全关键技术研究</li>
-        <li>2015—2017 主持上海张江国家自主创新示范区专项（201505-ZB-C101-008），基于CBTC系统LTE综合试验室建设与应用研究</li>
-        <li>2013—2015 主持上海市科委重大项目（13511503003），CBTC无线通信系统抗干扰测试及综合技术研究</li>
-        <li>2013年 主持上海申通集团 CBTC系统改进研究</li>
-        <li>2013年 主持上海申通集团 增强型CBTC系统预研究</li>
-        <li>2012—2016 负责国家自然科学基金重点项目（61132003），面向地下轨道交通的无线信道模型构建与应用</li>
-        <li>2012—2015 主持国家自然科学基金面上项目（61171086），隧道内微波毫米波信号无线传输的建模与实时仿真理论</li>
-        <li>2012年 主持上海申通集团 轨道交通网络通信系统检测技术研究</li>
-        <li>2011年 主持上海申通集团 CBTC无线通信方式与相关技术研究</li>
-        <li>2010—2011 主持科技部科技人员服务企业行动项目(2009GJC00045)，轨道交通无线通信测试平台</li>
-        <li>2009—2011 主持国家自然科学基金面上项目（60872021），基于甚小线性调频的超窄带高速无线通信关键技术研究</li>
-        <li>2009—2010 主持"十一五"国家科技支撑计划子课题(115-06-YK-018)，高速磁浮毫米波在隧道和穹隆站台内通信的系统性能仿真</li>
-        <li>2009—2010 主持"十一五"国家科技支撑计划子课题(115-04-YK-031)，磁浮无线电系统场强测试技术研究</li>
-        <li>2008—2009 主持上海国际合作白玉兰基金(2008B050)，城市轨道交通车地无线电通信技术合作研究（美国密西根大学）</li>
-        <li>2007—2009 承担上海市经委重大技术装备研制专项，轨道交通列车控制系统中无线通信系统的研发</li>
-        <li>2007—2008 主持国家863计划子课题（ZX-06-800-025），毫米波通信系统在隧道内传播特性的测试</li>
-        <li>2005—2008 主持上海欣民通信有限公司项目，轨道交通车载视频监控系统研究</li>
-        <li>2005—2007 负责上海市科委国际合作项目，UWB关键技术的研究</li>
-        <li>2005—2006 参加上海市申通轨道交通研究咨询有限公司项目，轨道交通车载视频监控系统</li>
-        <li>2006—2007 参加上海市申通轨道交通研究咨询有限公司项目，5.8GHz无线频段车-地视频传输研究</li>
-        <li>2005—2006 主持国家863计划高速磁浮交通技术重大专项子课题，毫米波在特殊空间传播规律的研究</li>
-        <li>2004—2006 主持上海市科委重点项目，城市轨道交通无线通信系统互联互通的研究</li>
-        <li>2004—2005 主持制定上海市城市建设地方标准，城市轨道交通无线通信系统技术规范</li>
-        <li>2002—2003 主持上海申通集团委托项目，上海轨道交通无线通信系统组网方案的研究</li>
-        <li>2001—2002 参加上海市科委重大项目，蓝牙技术应用研究</li>
-        <li>2000—2002 主持国家自然科学基金项目，工作面及顺槽个人通信系统</li>
-        <li>2000—2001 主持山西省科委自然基金项目，矿用电器的电磁兼容性研究</li>
-      </ul>
-      <a href="#" onclick="document.getElementById('projMore').style.display='block';this.style.display='none';return false;" class="expand-link" id="projExpand">
-        <i class="fa-solid fa-chevron-down"></i> 展开全部科研项目（共32项）
-      </a>
+      <!-- 赵恒凯 -->
+      <div class="team-item">
+        <div class="team-item-header" onclick="toggleTeamItem(this)">
+          <div class="team-header-left">
+            <h3>赵恒凯 副教授</h3>
+            <div class="team-header-sub">上海大学通信与信息工程学院</div>
+          </div>
+          <i class="fa-solid fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="team-item-body">
+          <div class="team-item-body-inner">
+            <p>赵恒凯，副教授，从事大气湍流中电波传播、轨道交通无线通信、微波/毫米波无线通信、信号检测与控制等。发表论著50余篇。主持和参与国家自然科学基金、国家科技支撑计划、863项目、上海市科技攻关项目、上海市教委项目、企业合作开发项目等各类项目20多项。</p>
+            <a href="https://scie-ce.shu.edu.cn/info/1091/1060.htm" target="_blank" class="team-ext-link">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> 查看详细资料
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 吴雅婷 -->
+      <div class="team-item">
+        <div class="team-item-header" onclick="toggleTeamItem(this)">
+          <div class="team-header-left">
+            <h3>吴雅婷 副教授</h3>
+            <div class="team-header-sub">上海大学通信与信息工程学院</div>
+          </div>
+          <i class="fa-solid fa-chevron-down toggle-icon"></i>
+        </div>
+        <div class="team-item-body">
+          <div class="team-item-body-inner">
+            <p>吴雅婷，2004年毕业于北京邮电大学电子与科学技术系，2009年在北京大学微电子系获博士学位，同年在香港城市大学获电子工程博士学位。2009.7至2010.6期间在香港城市大学任高级助理研究员，现任上海大学通信学院副教授。</p>
+            <p>主持和参与多项国家自然科学基金项目，作为第一作者发表30余篇SCI/EI论文，上海高校青年教师教学竞赛三等奖，获教育部高校博士点专项基金、上海市教委与教育发展基金会"晨光"人才计划项目等资助。近年来研究方向为无线通信与光通信融合。</p>
+            <a href="https://scie-ce.shu.edu.cn/info/1091/1071.htm" target="_blank" class="team-ext-link">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> 查看详细资料
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -1004,6 +1141,12 @@ function renderPublications() {
       return '<div class="pub-item"><span class="pub-authors">'+p.a+'</span>. <span class="pub-title">"'+p.t+'"</span>. <span class="pub-venue"><em>'+p.v+'</em>, '+p.y+'.</span></div>';
     }).join('')+'</div>';
   }).join('');
+}
+
+// ===== TEAM ACCORDION TOGGLE =====
+function toggleTeamItem(header) {
+  var item = header.parentElement;
+  item.classList.toggle('open');
 }
 
 // ===== TAB SWITCHING =====
