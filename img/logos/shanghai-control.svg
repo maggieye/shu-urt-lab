@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
-  <rect width="200" height="60" fill="transparent"/>
-  <text x="100" y="35" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="20" fill="#1f4f7a" letter-spacing="2">上海控安</text>
-  <line x1="35" y1="44" x2="165" y2="44" stroke="#c9a84c" stroke-width="2.5" stroke-linecap="round"/>
-  <text x="100" y="56" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="#5a6c7d" letter-spacing="1.5">SHANGHAI CONTROL SAFETY</text>
-</svg>

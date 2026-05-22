@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
-  <rect width="200" height="60" fill="transparent"/>
-  <text x="100" y="36" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="24" fill="#1f4f7a" letter-spacing="3">CASCO</text>
-  <line x1="30" y1="46" x2="170" y2="46" stroke="#c9a84c" stroke-width="2.5" stroke-linecap="round"/>
-  <text x="100" y="57" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#5a6c7d" letter-spacing="2">卡斯柯信号</text>
-</svg>

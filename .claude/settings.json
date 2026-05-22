@@ -56,7 +56,12 @@
       "Bash(\"D:/LenovoSoftstore/Install/Anaconda/python\" -m pip install python-docx)",
       "Bash(D:/LenovoSoftstore/Install/Anaconda/python -c ' *)",
       "Bash(git submodule *)",
-      "Bash(git ls-tree *)"
+      "Bash(git ls-tree *)",
+      "Bash(python3 -c \"import PIL; print\\('PIL available'\\)\")",
+      "Bash(python -c \"import subprocess; print\\(subprocess.run\\(['where', 'potrace'], capture_output=True, text=True\\).stdout\\)\")",
+      "Bash(\"D:/LenovoSoftstore/Install/Anaconda/python.exe\" -c \"from PIL import Image; print\\('Pillow OK'\\)\")",
+      "Bash(D:/LenovoSoftstore/Install/Anaconda/python.exe -c ' *)",
+      "Bash(\"D:/LenovoSoftstore/Install/Anaconda/python.exe\")"
     ],
     "additionalDirectories": [
       "d:\\博士\\shu-urt-lab"
