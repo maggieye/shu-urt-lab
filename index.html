@@ -376,6 +376,17 @@ body {
   font-size: 1rem; font-weight: 500; text-decoration: none;
 }
 .team-ext-link:hover { color: var(--blue-mid); text-decoration: underline; }
+.team-collapse-bar { text-align: center; margin-top: 8px; }
+.team-collapse-btn {
+  background: none; border: 1px solid var(--border);
+  border-radius: 6px; padding: 6px 24px;
+  color: var(--text-muted); font-size: 0.9rem;
+  cursor: pointer; transition: all 0.2s;
+}
+.team-collapse-btn:hover {
+  background: var(--blue-bg); color: var(--blue-accent);
+  border-color: var(--blue-accent);
+}
 
 /* Responsive */
 @media (max-width: 991.98px) {
@@ -480,7 +491,7 @@ body {
       <div class="row g-3 mt-2">
         <div class="col-6 col-md">
           <div class="collab-card">
-            <div class="collab-logo"><img src="img/logos/casco.svg" alt="卡斯柯信号"></div>
+          <div class="collab-logo"><img src="img/logos/casco.png" alt="卡斯柯信号"></div>
             <h5>卡斯柯信号</h5>
             <p>Casco Signal Ltd.</p>
           </div>
@@ -494,13 +505,14 @@ body {
         </div>
         <div class="col-6 col-md">
           <div class="collab-card">
+          <div class="collab-logo"><img src="img/logos/csrc.png" alt="上海中铁通号测试"></div>
             <h5>上海中铁通号测试</h5>
             <p>CRSC Testing Co.</p>
           </div>
         </div>
         <div class="col-6 col-md">
           <div class="collab-card">
-            <div class="collab-logo"><img src="img/logos/" alt="上海控安"></div>
+          <div class="collab-logo"><img src="img/logos/shanghai_control.png" alt="上海控安"></div>
             <h5>上海控安</h5>
             <p>Shanghai Control Safety</p>
           </div>
@@ -799,7 +811,7 @@ body {
     <div class="team-accordion">
 
       <!-- 郑国莘 -->
-      <div class="team-item open">
+      <div class="team-item">
         <div class="team-item-header" onclick="toggleTeamItem(this)">
           <div class="team-header-left">
             <h3>郑国莘 教授 <small class="text-muted" style="font-size:0.95rem;">Prof. Zheng Guoxin</small></h3>
@@ -897,7 +909,7 @@ body {
         </div>
         <div class="team-item-body">
           <div class="team-item-body-inner">
-            <p>金彦亮，副教授。2005年获得上海交通大学通信与信息系统专业博士学位。</p>
+            <p>金彦亮 博士，上海大学副教授。2005年获得上海交通大学通信与信息系统专业博士学位。1997年、2000年分获西安电子科技大学电子工程学院信息处理专业学士、硕士学位。2005年起在上海大学通信与信息工程学院工作。通信学会无线专委会委员。</p>
             <a href="https://scie-ce.shu.edu.cn/info/1091/1052.htm" target="_blank" class="team-ext-link">
               <i class="fa-solid fa-arrow-up-right-from-square"></i> 查看详细资料
             </a>
@@ -910,7 +922,7 @@ body {
         <div class="team-item-header" onclick="toggleTeamItem(this)">
           <div class="team-header-left">
             <h3>王瑞 教授</h3>
-            <div class="team-header-sub">IEEE高级会员 · 上海大学通信与信息工程学院</div>
+            <div class="team-header-sub">上海大学通信与信息工程学院</div>
           </div>
           <i class="fa-solid fa-chevron-down toggle-icon"></i>
         </div>
@@ -955,13 +967,19 @@ body {
         </div>
         <div class="team-item-body">
           <div class="team-item-body-inner">
-            <p>吴雅婷，2004年毕业于北京邮电大学电子与科学技术系，2009年在北京大学微电子系获博士学位，同年在香港城市大学获电子工程博士学位。2009.7至2010.6期间在香港城市大学任高级助理研究员，现任上海大学通信学院副教授。</p>
-            <p>主持和参与多项国家自然科学基金项目，作为第一作者发表30余篇SCI/EI论文，上海高校青年教师教学竞赛三等奖，获教育部高校博士点专项基金、上海市教委与教育发展基金会"晨光"人才计划项目等资助。近年来研究方向为无线通信与光通信融合。</p>
+            <p>吴雅婷，副教授，博士。2004 年毕业于北京邮电大学电子与科学技术系，2009 年获北京大学微电子系博士学位，同年获香港城市大学电子工程博士学位。2009.7至2010.6 任香港城市大学高级助理研究员，现任上海大学通信学院副教授、硕士研究生导师。</p>
+            <p>主要研究领域：无线通信。主持和参与多项国家自然科学基金项目，获教育部高校博士点专项基金、上海市教委与教育发展基金会 “晨光” 人才计划项目等资助。发表 SCI/EI 论文 30 余篇，获上海高校青年教师教学竞赛三等奖。</p>
             <a href="https://scie-ce.shu.edu.cn/info/1091/1071.htm" target="_blank" class="team-ext-link">
               <i class="fa-solid fa-arrow-up-right-from-square"></i> 查看详细资料
             </a>
           </div>
         </div>
+      </div>
+
+      <div class="team-collapse-bar">
+        <button class="team-collapse-btn" onclick="collapseAllTeam()">
+          <i class="fa-solid fa-chevron-up"></i> 收起全部
+        </button>
       </div>
 
     </div>
@@ -1146,6 +1164,10 @@ function renderPublications() {
 function toggleTeamItem(header) {
   var item = header.parentElement;
   item.classList.toggle('open');
+}
+function collapseAllTeam() {
+  var items = document.querySelectorAll('.team-item.open');
+  items.forEach(function(item) { item.classList.remove('open'); });
 }
 
 // ===== TAB SWITCHING =====
