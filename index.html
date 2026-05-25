@@ -593,24 +593,24 @@ body {
 
       <h2 class="mt-5">工程实践</h2>
       <ul class="eng-list">
-        <li>2017年保障了<strong>国内首条采用4G实现列车控制的武汉6号线工程</strong>一次性地实验成功。</li>
-        <li>2019年首次成功试验了国产祖冲之密码，在<strong>郑州14号线和上海18号线</strong>信息安全中使用。</li>
-        <li>2020-2023年与<strong>华为公司以及上海申通地铁集团合作</strong>，在<strong>上海地铁7号线</strong>开展<strong>5G地铁技术研究</strong>，为下阶段5G在大规模应用提供支撑。</li>
         <li>近三年来，共支持了<strong>上海、武汉、沈阳、西安、郑州、南宁、长春等多地地铁的通信工程建设</strong>。</li>
+        <li>2020-2023年与<strong>华为公司以及上海申通地铁集团合作</strong>，在<strong>上海地铁7号线</strong>开展<strong>5G地铁技术研究</strong>，为下阶段5G在大规模应用提供支撑。</li>
+        <li>2019年首次成功试验了国产祖冲之密码，在<strong>郑州14号线和上海18号线</strong>信息安全中使用。</li>
+        <li>2017年保障了<strong>国内首条采用4G实现列车控制的武汉6号线工程</strong>一次性地实验成功。</li>
       </ul>
 
       <h2 class="mt-5">获奖荣誉</h2>
       <ul class="award-inline-list" id="awardsListZh">
-        <li>2010年 "城市轨道交通无线通信系统关键技术" <strong>上海市科技进步奖三等奖</strong>；"轨道交通车地无线通信测试平台" <strong>上海国际工博会高校展区一等奖</strong></li>
-        <li>2014年 "轨道交通及铁路无线通信专用测试技术及应用" <strong>上海市科技进步奖三等奖</strong></li>
-        <li>2019年 与上海申通地铁集团、华为公司合作 "面向轨道交通多业务融合的无线宽带通信关键技术研究与应用" 获得<strong>上海市科技进步奖二等奖</strong></li>
         <li>2025年 "城市轨道交通网络化全场景无线通信体系关键技术研究与应用" <strong>中国城市轨道交通协会科技进步一等奖</strong></li>
+        <li>2019年 与上海申通地铁集团、华为公司合作 "面向轨道交通多业务融合的无线宽带通信关键技术研究与应用" 获得<strong>上海市科技进步奖二等奖</strong></li>
+        <li>2014年 "轨道交通及铁路无线通信专用测试技术及应用" <strong>上海市科技进步奖三等奖</strong></li>
+        <li>2010年 "城市轨道交通无线通信系统关键技术" <strong>上海市科技进步奖三等奖</strong>；"轨道交通车地无线通信测试平台" <strong>上海国际工博会高校展区一等奖</strong></li>
       </ul>
       <ul class="award-inline-list d-none" id="awardsListEn">
-        <li>2010 — "Key Technologies for Urban Rail Transit Wireless Communication Systems," 3rd Prize, Shanghai S&T Progress Award; "Rail Transit Train-Ground Wireless Communication Testing Platform," 1st Prize, Shanghai International Industry Fair (University Section)</li>
-        <li>2014 — "Specialized Testing Technology and Application for Rail Transit & Railway Wireless Communication," 3rd Prize, Shanghai S&T Progress Award</li>
-        <li>2019 — "Key Technologies Research and Application of Multi-Service Converged Wireless Broadband Communication for Rail Transit" (with Shentong Metro & Huawei), 2nd Prize, Shanghai S&T Progress Award</li>
         <li>2025 — "Key Technologies Research and Application of Networked Full-Scenario Wireless Communication System for Urban Rail Transit," 1st Prize, China Urban Rail Transit Association S&T Progress Award</li>
+        <li>2019 — "Key Technologies Research and Application of Multi-Service Converged Wireless Broadband Communication for Rail Transit" (with Shentong Metro & Huawei), 2nd Prize, Shanghai S&T Progress Award</li>
+        <li>2014 — "Specialized Testing Technology and Application for Rail Transit & Railway Wireless Communication," 3rd Prize, Shanghai S&T Progress Award</li>
+        <li>2010 — "Key Technologies for Urban Rail Transit Wireless Communication Systems," 3rd Prize, Shanghai S&T Progress Award; "Rail Transit Train-Ground Wireless Communication Testing Platform," 1st Prize, Shanghai International Industry Fair (University Section)</li>
       </ul>
     </div>
   </div>
@@ -1146,7 +1146,7 @@ var pubsEn = [
 // ===== RENDER FUNCTIONS =====
 function renderProjects() {
   var data = L === 'zh' ? projectsZh : projectsEn;
-  document.getElementById('projectsBody').innerHTML = data.map(function(p){
+  document.getElementById('projectsBody').innerHTML = data.slice().reverse().map(function(p){
     return '<tr><td class="text-nowrap">'+p.y+'</td><td>'+p.s+'</td><td>'+p.t+'</td></tr>';
   }).join('');
 }
