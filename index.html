@@ -428,7 +428,6 @@ body {
 }
 .share-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 .share-actions .btn { min-height: 44px; display: inline-flex; align-items: center; gap: 7px; }
-.wechat-note { margin: 18px 0 0; padding: 12px 14px; border-left: 3px solid var(--gold); background: #fff9e8; font-size: 0.88rem; color: #685927; }
 .copy-feedback { min-height: 24px; margin-top: 8px; color: #26734d; font-size: 0.9rem; }
 
 /* Responsive */
@@ -474,7 +473,6 @@ body {
   .qr-frame { width: 240px; min-height: 240px; margin: 0 auto; }
   .share-copy h2 { margin: 0 38px 8px; font-size: 1.4rem; }
   .share-actions { justify-content: center; }
-  .wechat-note { text-align: left; }
 }
 @media (max-width: 380px) {
   .banner-title { font-size: 0.92rem; }
@@ -541,9 +539,8 @@ body {
             <i class="fa-regular fa-copy"></i> <span data-t="复制链接" data-e="Copy link">复制链接</span>
           </button>
         </div>
-        <!-- <div class="copy-feedback" id="copyFeedback" aria-live="polite"></div>
-        <p class="wechat-note" data-t="提示：二维码不能绕过微信的外链安全提示。微信扫码后如出现“非微信官方网页”，可确认域名无误后继续访问，或从右上角选择在浏览器中打开。" data-e="Note: A QR code cannot bypass WeChat's external-link warning. Verify the domain and continue, or choose Open in Browser from the menu.">提示：二维码不能绕过微信的外链安全提示。微信扫码后如出现“非微信官方网页”，可确认域名无误后继续访问，或从右上角选择在浏览器中打开。</p>
-      </div> -->
+        <div class="copy-feedback" id="copyFeedback" aria-live="polite"></div>
+      </div>
     </div>
   </div>
 </div>
