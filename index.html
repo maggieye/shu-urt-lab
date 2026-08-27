@@ -388,6 +388,49 @@ body {
   border-color: var(--blue-accent);
 }
 
+/* ===== SHARE / QR CODE ===== */
+.banner-right { display: flex; align-items: center; gap: 10px; }
+.share-btn {
+  background: var(--gold); border: 1px solid var(--gold); color: #132a42;
+  padding: 7px 16px; border-radius: 20px; cursor: pointer;
+  font-size: 0.95rem; font-weight: 600; white-space: nowrap;
+  transition: transform 0.2s, filter 0.2s;
+}
+.share-btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.share-overlay {
+  position: fixed; inset: 0; z-index: 1000; display: none;
+  align-items: center; justify-content: center; padding: 20px;
+  background: rgba(9, 25, 41, 0.72); backdrop-filter: blur(4px);
+}
+.share-overlay.open { display: flex; }
+.share-dialog {
+  position: relative; width: min(100%, 720px); max-height: calc(100vh - 40px);
+  overflow-y: auto; background: #fff; border-radius: 18px;
+  box-shadow: 0 22px 70px rgba(0,0,0,0.28); padding: 34px;
+}
+.share-close {
+  position: absolute; top: 14px; right: 14px; width: 40px; height: 40px;
+  border: 0; border-radius: 50%; background: var(--blue-bg); color: var(--blue-dark);
+  font-size: 1.1rem; cursor: pointer;
+}
+.share-content { display: grid; grid-template-columns: 280px 1fr; gap: 34px; align-items: center; }
+.qr-frame {
+  width: 280px; min-height: 280px; display: flex; align-items: center; justify-content: center;
+  padding: 12px; background: #fff; border: 1px solid var(--border); border-radius: 14px;
+}
+.qr-frame img, .qr-frame canvas { display: block; max-width: 100%; height: auto; }
+.share-copy h2 { margin: 0 42px 10px 0; color: var(--blue-dark); font-size: 1.65rem; font-weight: 700; }
+.share-copy p { color: var(--text-light); font-size: 1rem; line-height: 1.65; }
+.share-url {
+  display: block; overflow-wrap: anywhere; margin: 16px 0; padding: 11px 12px;
+  border-radius: 8px; background: var(--blue-bg); color: var(--blue-mid);
+  font-size: 0.88rem; line-height: 1.45;
+}
+.share-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.share-actions .btn { min-height: 44px; display: inline-flex; align-items: center; gap: 7px; }
+.wechat-note { margin: 18px 0 0; padding: 12px 14px; border-left: 3px solid var(--gold); background: #fff9e8; font-size: 0.88rem; color: #685927; }
+.copy-feedback { min-height: 24px; margin-top: 8px; color: #26734d; font-size: 0.9rem; }
+
 /* Responsive */
 @media (max-width: 991.98px) {
   .about-carousel .carousel-item { height: 220px; }
@@ -395,13 +438,51 @@ body {
   .tab-nav .nav-link { font-size: 1.1rem; padding: 12px 8px; }
 }
 @media (max-width: 767.98px) {
+  body { font-size: 1rem; line-height: 1.7; overflow-x: hidden; }
+  .container { --bs-gutter-x: 1.5rem; }
+  .top-banner { padding: 12px 0; }
+  .top-banner .container { flex-wrap: nowrap; gap: 10px; }
+  .banner-left { min-width: 0; gap: 10px; }
+  .banner-logo { width: 42px; height: 42px; flex: 0 0 42px; font-size: 1.25rem; }
+  .banner-title { font-size: 1.02rem; line-height: 1.35; }
+  .banner-sub { display: none; }
+  .banner-right { gap: 6px; flex-shrink: 0; }
+  .share-btn, .lang-btn { width: 40px; height: 40px; padding: 0; border-radius: 50%; }
+  .share-btn span, .lang-btn span { display: none; }
+  .tab-nav-wrapper .container { padding: 0; max-width: none; }
+  .tab-nav { flex-wrap: nowrap; scroll-snap-type: x proximity; scrollbar-width: none; }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-nav .nav-item { flex: 0 0 auto; min-width: 0; scroll-snap-align: center; }
   .about-carousel { max-width: 100%; margin-top: 20px; }
   .about-carousel .carousel-item { height: 200px; }
-  .tab-nav .nav-link { font-size: 1rem; padding: 10px 6px; }
+  .tab-nav .nav-link { font-size: 0.92rem; padding: 11px 13px 9px; }
   .tab-nav .nav-link i { margin-right: 2px; }
   .section-hero, .about-hero { padding: 30px 0 24px; }
   .section-hero h1, .about-hero h1 { font-size: 1.7rem; }
   .section-body, .about-content { padding: 30px 0; }
+  .about-content h2, .section-body h2, .section-title-center { font-size: 1.4rem; }
+  .about-content p, .section-body p, .research-chain-desc { font-size: 1rem; line-height: 1.75; }
+  .info-card, .research-card { padding: 22px 18px; }
+  .team-item-header { padding: 16px; }
+  .team-item-body-inner { padding: 0 18px 22px; }
+  .team-item .team-photo { float: none; display: block; margin: 8px auto 18px; }
+  .data-table { min-width: 720px; font-size: 0.92rem; }
+  .data-table th, .data-table td { padding: 9px 10px; }
+  .site-footer { padding: 32px 0 22px; }
+  .share-dialog { padding: 28px 20px 22px; border-radius: 14px; }
+  .share-content { grid-template-columns: 1fr; gap: 20px; text-align: center; }
+  .qr-frame { width: 240px; min-height: 240px; margin: 0 auto; }
+  .share-copy h2 { margin: 0 38px 8px; font-size: 1.4rem; }
+  .share-actions { justify-content: center; }
+  .wechat-note { text-align: left; }
+}
+@media (max-width: 380px) {
+  .banner-title { font-size: 0.92rem; }
+  .share-btn, .lang-btn { width: 36px; height: 36px; }
+  .qr-frame { width: 210px; min-height: 210px; }
+}
+@media (hover: none) {
+  .info-card:hover, .research-card:hover, .collab-card:hover { transform: none; }
 }
 </style>
 </head>
@@ -418,6 +499,9 @@ body {
       </div>
     </div>
     <div class="banner-right">
+      <button class="share-btn" type="button" onclick="openShareModal()" aria-label="显示访问二维码">
+        <i class="fa-solid fa-qrcode"></i> <span data-t="扫码访问" data-e="QR code">扫码访问</span>
+      </button>
       <button class="lang-btn" onclick="switchLang()"><i class="fa-solid fa-globe"></i> <span id="langLabel">English</span></button>
     </div>
   </div>
@@ -434,6 +518,33 @@ body {
       <li class="nav-item"><a class="nav-link" data-tab="resources" onclick="switchTab('resources')"><i class="fa-solid fa-database"></i> <span data-t="开源资源" data-e="Resources">开源资源</span></a></li>
       <li class="nav-item"><a class="nav-link" data-tab="team" onclick="switchTab('team')"><i class="fa-solid fa-users"></i> <span data-t="研究团队" data-e="Team">研究团队</span></a></li>
     </ul>
+  </div>
+</div>
+
+<!-- ===== SHARE / QR CODE DIALOG ===== -->
+<div class="share-overlay" id="shareOverlay" role="dialog" aria-modal="true" aria-labelledby="shareTitle" onclick="closeShareModal(event)">
+  <div class="share-dialog">
+    <button class="share-close" type="button" onclick="closeShareModal()" aria-label="关闭">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="share-content">
+      <div class="qr-frame" id="qrCode" aria-label="实验室网页访问二维码"></div>
+      <div class="share-copy">
+        <h2 id="shareTitle" data-t="扫码访问实验室主页" data-e="Scan to visit the lab">扫码访问实验室主页</h2>
+        <p data-t="用手机相机、微信或其他扫码工具识别二维码，即可进入网页。" data-e="Scan with your phone camera, WeChat, or another QR reader to open the website.">用手机相机、微信或其他扫码工具识别二维码，即可进入网页。</p>
+        <a class="share-url" id="shareUrl" href="https://maggieye.github.io/shu-urt-lab/" target="_blank" rel="noopener">https://maggieye.github.io/shu-urt-lab/</a>
+        <div class="share-actions">
+          <button class="btn btn-primary" type="button" onclick="downloadQrCode()">
+            <i class="fa-solid fa-download"></i> <span data-t="下载二维码" data-e="Download QR">下载二维码</span>
+          </button>
+          <button class="btn btn-outline-primary" type="button" onclick="copyShareUrl()">
+            <i class="fa-regular fa-copy"></i> <span data-t="复制链接" data-e="Copy link">复制链接</span>
+          </button>
+        </div>
+        <div class="copy-feedback" id="copyFeedback" aria-live="polite"></div>
+        <p class="wechat-note" data-t="提示：二维码不能绕过微信的外链安全提示。微信扫码后如出现“非微信官方网页”，可确认域名无误后继续访问，或从右上角选择在浏览器中打开。" data-e="Note: A QR code cannot bypass WeChat's external-link warning. Verify the domain and continue, or choose Open in Browser from the menu.">提示：二维码不能绕过微信的外链安全提示。微信扫码后如出现“非微信官方网页”，可确认域名无误后继续访问，或从右上角选择在浏览器中打开。</p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1018,9 +1129,81 @@ body {
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 // ===== DATA =====
 var L = 'zh';
+var SHARE_URL = 'https://maggieye.github.io/shu-urt-lab/';
+var qrReady = false;
+
+function ensureQrCode() {
+  if (qrReady || typeof QRCode === 'undefined') return;
+  var size = window.innerWidth <= 380 ? 186 : (window.innerWidth <= 767 ? 216 : 256);
+  new QRCode(document.getElementById('qrCode'), {
+    text: SHARE_URL,
+    width: size,
+    height: size,
+    colorDark: '#132a42',
+    colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.H
+  });
+  qrReady = true;
+}
+
+function openShareModal() {
+  var overlay = document.getElementById('shareOverlay');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  ensureQrCode();
+  if (!qrReady) {
+    document.getElementById('qrCode').textContent = L === 'zh' ? '二维码组件加载失败，请直接复制链接。' : 'QR code failed to load. Please copy the link.';
+  }
+  overlay.querySelector('.share-close').focus();
+}
+
+function closeShareModal(event) {
+  var overlay = document.getElementById('shareOverlay');
+  if (event && event.target !== overlay) return;
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function copyShareUrl() {
+  var feedback = document.getElementById('copyFeedback');
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(SHARE_URL).then(function() {
+      feedback.textContent = L === 'zh' ? '链接已复制' : 'Link copied';
+    });
+  } else {
+    var input = document.createElement('textarea');
+    input.value = SHARE_URL;
+    input.style.position = 'fixed';
+    input.style.opacity = '0';
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand('copy');
+    input.remove();
+    feedback.textContent = L === 'zh' ? '链接已复制' : 'Link copied';
+  }
+}
+
+function downloadQrCode() {
+  ensureQrCode();
+  var qrImage = document.querySelector('#qrCode img');
+  var qrCanvas = document.querySelector('#qrCode canvas');
+  var dataUrl = qrImage && qrImage.src ? qrImage.src : (qrCanvas ? qrCanvas.toDataURL('image/png') : '');
+  if (!dataUrl) return;
+  var link = document.createElement('a');
+  link.href = dataUrl;
+  link.download = 'shu-urt-lab-qr-code.png';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+}
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') closeShareModal();
+});
 
 var projectsZh = [
   {y:'2008-2009',s:'上海国际合作白玉兰基金',t:'城市轨道交通车地无线电通信技术合作研究（美国密西根大学）'},
@@ -1175,7 +1358,9 @@ function switchTab(id) {
   document.querySelectorAll('.tab-pane').forEach(function(el){ el.classList.remove('active'); });
   document.querySelectorAll('.tab-nav .nav-link').forEach(function(el){ el.classList.remove('active'); });
   document.getElementById('pane-'+id).classList.add('active');
-  document.querySelector('[data-tab="'+id+'"]').classList.add('active');
+  var activeLink = document.querySelector('[data-tab="'+id+'"]');
+  activeLink.classList.add('active');
+  if (window.innerWidth <= 767) activeLink.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
   window.scrollTo({top:0,behavior:'smooth'});
   if (id === 'projects') renderProjects();
 }
